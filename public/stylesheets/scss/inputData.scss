@@ -1,0 +1,21 @@
+@import 'config';
+
+.selectUserDialog{
+    @include lightShadow;
+    height: 70vh;
+    padding: 30px;
+    margin: auto;
+    margin-top: calc( 15vh - 45px );
+    background-color: white;
+    h5{
+        color: $lb-color;
+    }
+    .calcBMI{
+        color: $lg-color;
+        font-weight: 800;
+        font-size: 15px;
+    }
+    p, a{
+        line-height: 32px;
+    }
+}

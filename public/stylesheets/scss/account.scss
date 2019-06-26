@@ -1,0 +1,693 @@
+@import 'config';
+
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.transaction{
+    @include dlpc-width{
+        display: none;
+    }
+    h5:first-of-type{
+        color: $lb-color;
+    }
+    .tableTitle{
+        width: 100%;
+        margin-top: 60px;
+        tr{
+            th{
+                line-height: 37px;
+                text-align: left;
+                &:first-of-type{
+                    width: 110px;
+                    padding-left: 10px;
+                }
+                &:last-of-type{
+                    width: 110px;
+                    text-align: right;
+                    padding-right: 10px;
+                }
+                font-weight: 800;
+                border-bottom: 1px solid $lb-color;
+            }
+        }
+    }
+    .transactionWrapper{
+        height: calc( 100vh - 386px);
+        overflow: auto;
+    }
+    .transactionTable{
+        width: 100%;
+        margin-top: 0px;
+        tr{
+            td{
+                padding: 15px 0px;
+                &:first-of-type{
+                    width: 110px;
+                    padding-left: 10px;
+                }
+                &:last-of-type{
+                    width: 110px;
+                    padding-right: 10px;
+                    text-align: right;
+                    color: green;
+                    &.neg{
+                        color: $lr-color;
+                    }
+                }
+                text-align: left;
+                border-bottom: 1px dashed lightgray;
+            }
+            cursor: pointer;
+            &:hover{
+                td{
+                    background-color: #f3f3f3;
+                }
+            }
+        }
+    }
+}
+
+.viewTrans{
+    display: none;
+    &.active{
+        display: block;
+    }
+    .tableTitle{
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+        margin-top: 60px;
+        @include pad-width{
+            margin-top: 30px;
+        }
+        tr{
+            th{
+                line-height: 37px;
+                text-align: left;
+                &:first-of-type{
+                    width: 110px;
+                    padding-left: 10px;
+                    @include pad-width{
+                        display: none;
+                    }
+                }
+                &:last-of-type{
+                    width: 110px;
+                    text-align: right;
+                    padding-right: 10px;
+                }
+                font-weight: 800;
+                border-bottom: 1px solid $lb-color;
+            }
+        }
+    }
+    .transactionWrapper{
+        height: calc( 100% - 137px);
+        overflow: auto;
+    }
+    .transactionTable{
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+        margin-top: 0px;
+        tr{
+            td{
+                padding: 15px 0px;
+                &:first-of-type{
+                    width: 110px;
+                    padding-left: 10px;
+                    @include pad-width{
+                        display: none;
+                    }
+                }
+                &:last-of-type{
+                    width: 110px;
+                    padding-right: 10px;
+                    text-align: right;
+                    color: green;
+                    &.neg{
+                        color: $lr-color;
+                    }
+                }
+                text-align: left;
+                border-bottom: 1px dashed lightgray;
+                p{
+                    display: none;
+                    color: gray;
+                    margin-bottom: 0px;
+                    @include pad-width{
+                        display: block;
+                    }
+                }
+            }
+            cursor: pointer;
+            &:hover{
+                td{
+                    background-color: #f3f3f3;
+                }
+            }
+        }
+    }
+}
+
+.accountContainer{
+    height: calc( 100vh - 200px );
+    margin-top: 50px;
+    @include pad-width{
+        height: auto;
+        min-height: 100vh;
+        padding: 0px;
+        margin-top: 0px!important;
+    }
+    padding: 0px 60px;
+    .row{
+        height: 100%;
+    }
+    .accountDetail{
+        width: 65%;
+        @include dlpc-width{
+            width: 100%;
+        }
+        padding-right: 15px;
+        @include pad-width{
+            padding-right: 0px;
+        }
+        .accountControl{
+            background-color: $lg-color;
+            width: calc( 100% + 60px );
+            margin-left: -30px;
+            margin-top: -30px;
+            padding: 30px;
+            @include pad-width{
+                width: calc( 100% + 20px);
+                margin-left: -10px;
+                margin-bottom: 0px;
+                padding-top: 60px;
+            }
+            margin-bottom: 30px;
+            color: white;
+            position: relative;
+            .accountTransferContainer{
+                float: right;
+                margin-top: 18.5px;
+                button{
+                    min-width: 150px;
+                }
+            }
+
+            p{
+                color: white;
+            }
+
+            h5{
+                font-weight: 800;
+                font-size: 30px;
+                margin-bottom: 0px;
+                span{
+                    font-size: 15px;
+                    color: white;
+                    font-weight: 800;
+                    margin-left: 15px;
+                    line-height: 48px;
+                }
+            }
+        }
+        .rewardInfo{
+            text-align: center;
+            height: calc( 100% - 134px );
+            @include pad-width{
+                height: auto;
+            }
+        }
+        .rewardTab{
+            margin-top: 60px;
+            height: calc( 100% - 97px );
+            overflow: auto;
+            display: none;
+            &.myCoupon{
+                margin-top: 0px;
+                height: calc( 100% - 137px );
+            }
+            &.getCoupon{
+                margin-top: 0px;
+                height: calc( 100% - 137px );
+            }
+            &.active{
+                display: block;
+            }
+            @include pad-width{
+                height: auto;
+            }
+        }
+        table.myCoupon{
+            display: none;
+            &.active{
+                display: table;
+                margin-top: 60px;
+                @include pad-width{
+                    margin-top: 30px;
+                }
+            }
+            &{
+                width: 100%;
+                text-align: left;
+                max-width: 800px;
+                margin: auto;
+                tr{
+                    th{
+                        height: 37px;
+                        line-height: 37px;
+                        font-weight: 800;
+                        color: $main-color;
+                        border-bottom: 1px solid $lb-color;
+                        &:first-of-type{
+                            padding-left: 10px;
+                            width: 140px;
+                            @include pad-width{
+                                display: none;
+                            }
+                        }
+                        &:nth-of-type(3){
+                            width: 150px;
+                            @include pad-width{
+                                display: none;
+                            }
+                        }
+                        &:last-of-type{
+                            width: 110px;
+                        }
+                    }
+                    td{
+                        height: 50px;
+                        border-bottom: 1px dashed lightgray;
+                        &:first-of-type{
+                            padding-left: 10px;
+                            width: 140px;
+                            @include pad-width{
+                                display: none;
+                            }
+                        }
+                        &:last-of-type{
+                            padding-right: 10px;
+                            width: 110px;
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+        }
+        table.getCoupon{
+            display: none;
+            &.active{
+                display: table;
+                margin-top: 60px;
+                @include pad-width{
+                    margin-top: 30px;
+                }
+            }
+            &{
+                width: 100%;
+                text-align: left;
+                max-width: 800px;
+                margin: auto;
+                tr{
+                    th{
+                        height: 37px;
+                        line-height: 37px;
+                        font-weight: 800;
+                        color: $main-color;
+                        border-bottom: 1px solid $lb-color;
+                        width: 100%;
+                        padding-left: 10px;
+                        position: relative;
+                        .couponScrollContainer{
+                            overflow-x: auto;
+                            width: 100%;
+                            position: absolute;
+                            width: calc( 100% - 20px );
+                            left: 10px;
+                            top: 0px;
+                        }
+                        .couponCateScroll{
+                            white-space: nowrap;
+                        }
+                        span{
+                            border-radius: 8px;
+                            background-color: transparent;
+                            color: $lg-color;
+                            padding: 5px 10px;
+                            cursor: pointer;
+                            white-space: nowrap;
+                            &:not(.disabled):hover{
+                                color: $lg-color-light;
+                            }
+                            &.active{
+                                background-color: $lg-color;
+                                color: white!important;
+                                &:hover{
+                                    background-color: $lg-color-light;
+                                }
+                            }
+                            &.disabled{
+                                cursor: not-allowed!important;
+                                color: gray;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        div.myCoupon, div.getCoupon{
+            &>table{
+                width: 100%;
+                text-align: left;
+                max-width: 800px;
+                margin: auto;
+                .mobileExpiry{
+                    display: none;
+                    margin-bottom: 0px;
+                    color: gray;
+                    @include pad-width{
+                        display: block;
+                    }
+                }
+                tr{
+                    th{
+                        height: 37px;
+                        line-height: 37px;
+                        font-weight: 800;
+                        color: $main-color;
+                        border-bottom: 1px solid $lb-color;
+                        &:first-of-type{
+                            padding-left: 10px;
+                            width: 140px;
+                        }
+                        &:last-of-type{
+                            width: 110px;
+                        }
+                    }
+                    td{
+                        height: 50px;
+                        @include pad-width{
+                            height: auto;
+                            line-height: normal;
+                            padding: 10px 0px;
+                        }
+                        border-bottom: 1px dashed lightgray;
+                        &:first-of-type{
+                            padding-left: 10px;
+                        }
+                        &:last-of-type{
+                            padding-right: 10px;
+                            width: 180px;
+                            text-align: right;
+                        }
+                    }
+                }
+                &:not(.tableTitle){
+                    tr{
+                        &:not(.used){
+                            cursor: pointer;
+                            &:hover{
+                                td{
+                                    background-color: #f3f3f3;
+                                }
+                            }
+                            &>td:last-of-type{
+                                color: $lg-color;
+                            }
+                        }
+                        &.used{
+                            opacity: .4;
+                            cursor: not-allowed;
+                        }
+                    }
+                }
+            }
+        }
+        div.myCoupon{
+            &>table{
+                tr{
+                    td{
+                        &:first-of-type{
+                            width: 140px;
+                            @include pad-width{
+                                display: none;
+                            }
+                        }
+                        &:nth-of-type(3){
+                            width: 150px;
+                            @include pad-width{
+                                display: none;
+                            }
+                        }
+                        &:last-of-type{
+                            width: 110px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .transaction{
+        padding-left: 15px;
+        width: 35%;
+    }
+    .dashContent{
+        @include lightShadow;
+        background-color: white;
+        padding: 30px;
+        height: calc( 100vh - 200px);
+        h5.title{
+            text-align: center;
+            color: $lb-color;
+        }
+        @include pad-width{
+            height: auto;
+            min-height: 100vh;
+            padding: 30px 10px;
+        }
+    }
+}
+
+.scrollHint{
+    display: none;
+    width: 100%;
+    height: 30px;
+    margin-bottom: 0px;
+    background-color: #096f7b;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    line-height: 30px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    @include pad-width{
+        display: block;
+    }
+}
+
+.rewardSwitchTab{
+    @include pad-width{
+        width: calc( 100% + 20px );
+        margin-left: -10px;
+        background-color: $lg-color;
+    }
+    &>div{
+        display: inline-block;
+        width: 150px;
+        text-align: center;
+        height: 37px;
+        color: lightgray;
+        border-bottom: 2px solid lightgray;
+        user-select: none;
+        line-height: 37px;
+        cursor: pointer;
+        @include pad-width{
+            width: calc( 100% / 3 );
+            color: #f7f7f7;
+            border-bottom-width: 3px;
+            border-bottom-color: $lg-color;
+        }
+        &.active{
+            border-bottom: 2px solid $lb-color;
+            color: $lb-color;
+            @include pad-width{
+                color: white;
+                border-bottom-color: white;
+                box-shadow: 0 0 15px 5px rgba(23, 157, 175, .2);
+                font-weight: 800;
+            }
+        }
+    }
+    .toViewTrans{
+        display: none;
+        @include dlpc-width{
+            display: inline-block;
+        }
+    }
+}
+
+.transferPoint{
+    .modalContent{
+        max-width: 600px;
+        margin: 100px auto 0px auto;
+        padding: 5px 30px 30px 30px;
+    }
+    .modalDecision{
+        width: 100%;
+        margin-top: 60px;
+        button{
+            display: inline-block;
+            width: calc( 50% - 15px);
+            &:last-of-type{
+                margin-left: 30px;
+            }
+        }
+    }
+}
+
+.confirmTransferModal, .confirmProductModal{
+    .modalContent{
+        max-width: 600px;
+        margin: 100px auto 0px auto;
+        padding: 30px;
+    }
+    .warningTitle{
+        color: $lr-color;
+    }
+    .inputUnit{
+        margin-top: 30px;
+        margin-bottom: 60px;
+        h5{
+            font-size: 15px;
+        }
+    }
+    .modalDecision{
+        width: 100%;
+        button{
+            display: inline-block;
+            width: calc( 50% - 15px);
+            &:last-of-type{
+                margin-left: 30px;
+            }
+        }
+    }
+}
+
+.productUseModal{
+    .modalContent{
+        width: 100%;
+        max-width: 600px;
+        height: 300px;
+        margin: 100px auto;
+        .urlArea{
+            background-color: #f1f1f1;
+            height: 150px;
+            text-align: center;
+            a{
+                p{
+                    color: $lb-color!important;
+                    font-size: 21px;
+                    line-height: 150px;
+                }
+                p.forPC{
+                    @include pad-width{
+                        display: none;
+                    }
+                }
+            }
+            .mobileGoBtn{
+                display: none;
+                @include pad-width{
+                    display: block;
+                }
+            }
+        }
+        table{
+            width: 100%;
+            height: 150px;
+            td{
+                &:first-of-type{
+                    width: 50%;
+                    height: 150px;
+                    padding-left: 30px;
+                    h5{
+                        font-size: 15px;
+                    }
+                    span{
+                        font-size: 30px;
+                        padding: 5px 10px;
+                        border: 2px dashed $lg-color;
+                        background-color: #dce7e8;
+                    }
+                }
+                &:last-of-type{
+                    height: 150px;   
+                    padding-right: 30px;
+                    p{
+                        margin-bottom: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.productModal{
+    .modalContent{
+        max-width: 400px;
+        margin: 100px auto;
+        position: relative;
+        .productModalLeft{
+            display: inline-block;
+            display: none;
+            width: 50%;
+            .productModalImg{
+                width: 100%;
+                padding-top: 100%;
+                background-color: gray;
+            }
+            vertical-align: top;
+        }
+        .productModalRight{
+            display: inline-block;
+            width: 100%;
+            vertical-align: top;
+            height: 100%;
+            padding: 30px;
+            padding-bottom: 82px;
+            span{
+                float: right;
+                color: green;
+            }
+            h5{
+                width: 100%;
+                padding-right: 60px;
+            }
+            p{
+                color: gray;
+            }
+            img{
+                width: 100%;
+            }
+        }
+        .modalDecision{
+            position: absolute;
+            width: 100%;
+            right: 0px;
+            bottom: 30px;
+            padding: 0px 30px;
+            button{
+                display: inline-block;
+                width: calc( 50% - 15px);
+                &:last-of-type{
+                    margin-left: 30px;
+                }
+            }
+        }
+    }
+}

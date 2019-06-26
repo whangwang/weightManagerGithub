@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <%- include('../layouts/include_header.ejs') %>
+        <link rel='stylesheet' href='/stylesheets/css/inputData.css' />
+    </head>
+    <body>
+        <%- include('../layouts/admin_header.ejs') %>
+        <%- include('../layouts/loading.ejs') %>
+        <div class="container">
+            <div class="selectUserDialog">
+                <div class="inputForm">
+                    <div class="inputUnit onethird">
+                        <h5>受測者帳號</h5>
+                        <p><%= user.account %></p>
+                    </div><div class="inputUnit onethird notfirst" style="margin-top: 0px;">
+                        <h5>受測時間</h5>
+                        <p id="currentTime"></p>
+                    </div><div class="inputUnit onethird notfirst" style="margin-top: 0px;">
+                        <h5></h5>
+                        <p></p>
+                    </div><div class="inputUnit onethird">
+                        <h5>受測者身高(cm)</h5>
+                        <% if(user.measureLogs.length == 0 ){ %>
+                            <input name="height" type="number" placeholder="請輸入身高" value=0>
+                        <% } else { %>
+                            <input name="height" type="number" placeholder="請輸入身高" value=<%= user.oriHeight %> disabled>
+                        <% } %>
+                    </div><div class="inputUnit onethird notfirst">
+                        <h5>受測者體重(kg)</h5>
+                        <input name="weight" type="number" placeholder="請輸入體重" value=0>
+                    </div><div class="inputUnit onethird notfirst">
+                        <h5>受測者BMI</h5>
+                        <p class="calcBMI">0</p>
+                    </div><div class="target inputUnit onethird" <% if (user.oriWeight == 0){ %>style="display:none;"<% } %>>
+                        <h5>受測者目標體重</h5>
+                        <p id="target-weight">80 kg</p>
+                    </div><div class="target inputUnit onethird notfirst" <% if (user.oriWeight == 0){ %>style="display:none;"<% } %>>
+                        <h5>受測目標日期</h5>
+                        <p id="target-date">2019.03.25</p>
+                    </div>
+                    <div class="btnGroup" style="text-align: right;">
+                        <!-- <button>清空</button> --><button
+                        class="green" id="submit" style="margin-left: 15px;">送出</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        $(document).ready(function(){
+            $('#currentTime').text(moment(Date.now()).format('YYYY.MM.DD'));
+            if ( <%= !user.twoWeekGoal && !user.twoWeekGoalFailed %> ){
+                $('#target-weight').text('<%= user.oriWeight - 1 %> kg');
+                $('#target-date').text(moment(Date.now() + 12096e5).format('YYYY.MM.DD'));
+            } else if ( <%= !user.oneMonthGoal && !user.oneMonthGoalFailed %> ){
+                $('#target-weight').text('<%= user.oriWeight * 0.95 %> kg');
+                $('#target-date').text(moment(Date.now() + 2592000000).format('YYYY.MM.DD'));
+            } else if ( <%= !user.threeMonthGoal && !user.threeMonthGoalFailed %> ){
+                $('#target-weight').text('<%= user.oriWeight * 0.9 %> kg');
+                $('#target-date').text(moment(Date.now() + 7776000000).format('YYYY.MM.DD'));
+            }
+            $('body').on('change paste keyup', 'input[name=height], input[name=weight]', function(){
+                $('.calcBMI').text(parseFloat($('input[name=weight]').val() / Math.pow(($('input[name=height]').val() / 100), 2)).toFixed(2));
+                if ($('.target').css('display') == 'none' || $('.target').hasClass('active')){
+                    $('.target').show();
+                    $('.target').addClass('active');
+                    $('#target-date').text(moment(Date.now() + 12096e5).format('YYYY.MM.DD'));
+                    $('#target-weight').text($('input[name=weight]').val()-1);
+                }
+            });
+            $('body').on('click', '#submit', function(){
+                if ($('input[name=weight]').val() == 0 || $('input[name=height]').val() == 0){
+                    toast('請輸入正確的身高及體重','danger');
+                } else {
+                    $('.webLoader').fadeIn(500).css('display','flex');
+                    $.post('/admin/ajax_save_measure', {user_id: '<%= user._id %>',measureDate: new Date(), weight: $('input[name=weight]').val(), height: $('input[name=height]').val()}, function(rtn){
+                        $('.webLoader').fadeOut(500);
+                        if(rtn.status){
+                            toast("儲存成功",'success')
+                            setTimeout(function(){
+                                location.href="/admin/selectUser";
+                            },3000)
+                        }
+                        else toast(rtn.msg,'danger')
+                    });
+                }
+            });
+        });
+    </script>
+</html>

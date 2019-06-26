@@ -1,0 +1,126 @@
+body {
+  text-align: center; }
+
+.indexContainer {
+  height: 100vh;
+  display: flex; }
+  @media all and (max-width: 991px) {
+    .indexContainer {
+      padding: 0px;
+      margin-top: 0px !important; } }
+
+h5.mobileLogo {
+  display: none;
+  font-size: 10px;
+  color: #282A46;
+  margin-left: 15px;
+  margin-top: 45px;
+  margin-bottom: 0px; }
+  @media all and (max-width: 991px) {
+    h5.mobileLogo {
+      display: inline-block; } }
+  h5.mobileLogo span {
+    font-size: 18px;
+    color: #1875AD;
+    font-weight: 800; }
+
+@media all and (max-width: 991px) {
+  .pcLoginTitle {
+    display: none; } }
+
+.loginContainer {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  width: 100%;
+  height: 80vh;
+  max-height: 600px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: white;
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  white-space: nowrap; }
+  @media all and (max-width: 991px) {
+    .loginContainer {
+      max-height: 100vh;
+      height: 100vh; } }
+  .loginContainer .loginPanel, .loginContainer .regisPanel {
+    background-color: white;
+    width: 450px;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    transition: margin-left 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+    padding: 30px; }
+    @media all and (max-width: 991px) {
+      .loginContainer .loginPanel, .loginContainer .regisPanel {
+        width: 100%;
+        padding: 10px; }
+      .loginContainer .loginPanel.regisPanel > .bold, .loginContainer .regisPanel.regisPanel > .bold {
+        margin-top: 45px !important; } }
+  .loginContainer .panelDeco {
+    position: relative;
+    width: calc( 100% - 450px);
+    display: inline-block;
+    height: 100%;
+    background-image: url(/images/loginbg.jpg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    transition: background-position 0.5s cubic-bezier(0.86, 0, 0.07, 1); }
+    @media all and (max-width: 991px) {
+      .loginContainer .panelDeco {
+        display: none; } }
+    .loginContainer .panelDeco .panelDecoTitle {
+      position: absolute;
+      bottom: 45px;
+      left: 45px;
+      transition: left 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+      width: 200px;
+      text-align: right; }
+      .loginContainer .panelDeco .panelDecoTitle h4 {
+        color: white;
+        font-weight: 400;
+        font-size: 30px;
+        margin-bottom: 10px;
+        margin-top: 0px;
+        width: 0px;
+        transition: width 1s cubic-bezier(0.86, 0, 0.07, 1); }
+      .loginContainer .panelDeco .panelDecoTitle h5 {
+        width: 0px;
+        transition: width 1s cubic-bezier(0.86, 0, 0.07, 1); }
+        .loginContainer .panelDeco .panelDecoTitle h5 span {
+          color: #1875AD;
+          font-size: 21px;
+          background-color: white;
+          padding: 5px 25px 5px 5px;
+          margin-top: 0px;
+          transition: padding 1s cubic-bezier(0.86, 0, 0.07, 1); }
+  .loginContainer.inLogin .regisPanel {
+    margin-left: -450px; }
+    @media all and (max-width: 991px) {
+      .loginContainer.inLogin .regisPanel {
+        margin-left: -100vw; } }
+  .loginContainer.inLogin .panelDeco {
+    background-position: left; }
+  .loginContainer.inLogin .panelDecoTitle {
+    left: 45px; }
+  .loginContainer.inRegis .regisPanel {
+    margin-left: 0px; }
+  .loginContainer.inRegis .panelDeco {
+    background-position: right; }
+  .loginContainer.inRegis .panelDecoTitle {
+    left: calc( 100% - 245px); }
+    .loginContainer.inRegis .panelDecoTitle h4, .loginContainer.inRegis .panelDecoTitle h5 {
+      width: 200px; }
+    .loginContainer.inRegis .panelDecoTitle h5 > span {
+      padding: 5px 5px 5px 25px; }
+  .loginContainer .loginInputForm {
+    height: calc( 100% - 66px);
+    margin-top: 45px; }
+    @media all and (max-width: 991px) {
+      .loginContainer .loginInputForm {
+        height: calc( 100% - 200px); } }

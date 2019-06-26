@@ -1,0 +1,199 @@
+.row {
+  margin-left: 0px;
+  margin-right: 0px; }
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1000000;
+  background-color: rgba(14, 59, 86, 0.7);
+  top: 0px; }
+  #container h5 {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    font-size: 48px;
+    color: white;
+    z-index: -1;
+    text-align: center;
+    line-height: 100vh; }
+    @media all and (max-width: 991px) {
+      #container h5 {
+        font-size: 21px; } }
+
+.first_time_description .modalContent {
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 30px; }
+  .first_time_description .modalContent h5:first-of-type {
+    text-align: center;
+    font-size: 21px;
+    margin-bottom: 21px;
+    color: #179DAF; }
+  .first_time_description .modalContent h5:last-of-type {
+    font-size: 15px;
+    color: gray; }
+
+.dashContainer {
+  margin-top: 50px;
+  height: calc( 100vh - 200px);
+  padding: 0px 60px; }
+  @media all and (max-width: 991px) {
+    .dashContainer {
+      padding: 0px 10px; } }
+  .dashContainer .row {
+    height: 100%; }
+  .dashContainer .leftPart, .dashContainer .centerPart, .dashContainer .rightPart {
+    height: 100%;
+    padding-left: 0px;
+    padding-right: 0px; }
+    .dashContainer .leftPart.leftPart, .dashContainer .centerPart.leftPart, .dashContainer .rightPart.leftPart {
+      padding-right: 15px; }
+      @media all and (max-width: 991px) {
+        .dashContainer .leftPart.leftPart, .dashContainer .centerPart.leftPart, .dashContainer .rightPart.leftPart {
+          margin-top: -10px !important; } }
+    .dashContainer .leftPart.centerPart, .dashContainer .centerPart.centerPart, .dashContainer .rightPart.centerPart {
+      padding-left: 15px;
+      padding-right: 15px; }
+      @media all and (max-width: 991px) {
+        .dashContainer .leftPart.centerPart, .dashContainer .centerPart.centerPart, .dashContainer .rightPart.centerPart {
+          margin-top: 10px !important; } }
+    .dashContainer .leftPart.rightPart, .dashContainer .centerPart.rightPart, .dashContainer .rightPart.rightPart {
+      padding-left: 15px; }
+      @media all and (max-width: 991px) {
+        .dashContainer .leftPart.rightPart, .dashContainer .centerPart.rightPart, .dashContainer .rightPart.rightPart {
+          margin-top: 10px !important; } }
+    @media all and (max-width: 991px) {
+      .dashContainer .leftPart, .dashContainer .centerPart, .dashContainer .rightPart {
+        padding-left: 0px !important;
+        padding-right: 0px !important; } }
+    .dashContainer .leftPart .dashContent, .dashContainer .centerPart .dashContent, .dashContainer .rightPart .dashContent {
+      -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+      -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+      background-color: white;
+      padding: 30px; }
+      @media all and (max-width: 991px) {
+        .dashContainer .leftPart .dashContent, .dashContainer .centerPart .dashContent, .dashContainer .rightPart .dashContent {
+          margin-top: 10px !important;
+          border-radius: 8px; } }
+      @media all and (max-width: 991px) {
+        .dashContainer .leftPart .dashContent, .dashContainer .centerPart .dashContent, .dashContainer .rightPart .dashContent {
+          padding: 30px 10px; } }
+      .dashContainer .leftPart .dashContent h5, .dashContainer .centerPart .dashContent h5, .dashContainer .rightPart .dashContent h5 {
+        text-align: center;
+        color: #1875AD; }
+      .dashContainer .leftPart .dashContent.weightLog, .dashContainer .centerPart .dashContent.weightLog, .dashContainer .rightPart .dashContent.weightLog {
+        width: 100%;
+        height: 100%; }
+        .dashContainer .leftPart .dashContent.weightLog .logTable, .dashContainer .centerPart .dashContent.weightLog .logTable, .dashContainer .rightPart .dashContent.weightLog .logTable {
+          padding: 15px 15px;
+          overflow: auto; }
+          .dashContainer .leftPart .dashContent.weightLog .logTable table, .dashContainer .centerPart .dashContent.weightLog .logTable table, .dashContainer .rightPart .dashContent.weightLog .logTable table {
+            width: 100%; }
+            .dashContainer .leftPart .dashContent.weightLog .logTable table tr:not(:first-of-type), .dashContainer .centerPart .dashContent.weightLog .logTable table tr:not(:first-of-type), .dashContainer .rightPart .dashContent.weightLog .logTable table tr:not(:first-of-type) {
+              opacity: .5; }
+            .dashContainer .leftPart .dashContent.weightLog .logTable table tr td, .dashContainer .centerPart .dashContent.weightLog .logTable table tr td, .dashContainer .rightPart .dashContent.weightLog .logTable table tr td {
+              height: 50px;
+              border-bottom: 1px dashed lightgray; }
+              .dashContainer .leftPart .dashContent.weightLog .logTable table tr td:nth-of-type(3), .dashContainer .centerPart .dashContent.weightLog .logTable table tr td:nth-of-type(3), .dashContainer .rightPart .dashContent.weightLog .logTable table tr td:nth-of-type(3) {
+                text-align: right;
+                padding-right: 15px;
+                color: #179DAF; }
+              .dashContainer .leftPart .dashContent.weightLog .logTable table tr td:nth-of-type(4), .dashContainer .centerPart .dashContent.weightLog .logTable table tr td:nth-of-type(4), .dashContainer .rightPart .dashContent.weightLog .logTable table tr td:nth-of-type(4) {
+                width: 45px;
+                text-align: right; }
+              .dashContainer .leftPart .dashContent.weightLog .logTable table tr td.up, .dashContainer .leftPart .dashContent.weightLog .logTable table tr td.down, .dashContainer .leftPart .dashContent.weightLog .logTable table tr td.even, .dashContainer .centerPart .dashContent.weightLog .logTable table tr td.up, .dashContainer .centerPart .dashContent.weightLog .logTable table tr td.down, .dashContainer .centerPart .dashContent.weightLog .logTable table tr td.even, .dashContainer .rightPart .dashContent.weightLog .logTable table tr td.up, .dashContainer .rightPart .dashContent.weightLog .logTable table tr td.down, .dashContainer .rightPart .dashContent.weightLog .logTable table tr td.even {
+                font-size: 10px; }
+                .dashContainer .leftPart .dashContent.weightLog .logTable table tr td.up.up, .dashContainer .leftPart .dashContent.weightLog .logTable table tr td.down.up, .dashContainer .leftPart .dashContent.weightLog .logTable table tr td.even.up, .dashContainer .centerPart .dashContent.weightLog .logTable table tr td.up.up, .dashContainer .centerPart .dashContent.weightLog .logTable table tr td.down.up, .dashContainer .centerPart .dashContent.weightLog .logTable table tr td.even.up, .dashContainer .rightPart .dashContent.weightLog .logTable table tr td.up.up, .dashContainer .rightPart .dashContent.weightLog .logTable table tr td.down.up, .dashContainer .rightPart .dashContent.weightLog .logTable table tr td.even.up {
+                  color: #b53131; }
+                .dashContainer .leftPart .dashContent.weightLog .logTable table tr td.up.down, .dashContainer .leftPart .dashContent.weightLog .logTable table tr td.down.down, .dashContainer .leftPart .dashContent.weightLog .logTable table tr td.even.down, .dashContainer .centerPart .dashContent.weightLog .logTable table tr td.up.down, .dashContainer .centerPart .dashContent.weightLog .logTable table tr td.down.down, .dashContainer .centerPart .dashContent.weightLog .logTable table tr td.even.down, .dashContainer .rightPart .dashContent.weightLog .logTable table tr td.up.down, .dashContainer .rightPart .dashContent.weightLog .logTable table tr td.down.down, .dashContainer .rightPart .dashContent.weightLog .logTable table tr td.even.down {
+                  color: green; }
+      .dashContainer .leftPart .dashContent.weightSche, .dashContainer .centerPart .dashContent.weightSche, .dashContainer .rightPart .dashContent.weightSche {
+        width: 100%;
+        height: calc( 50% - 15px);
+        text-align: center;
+        display: flex;
+        position: relative;
+        align-items: center; }
+        .dashContainer .leftPart .dashContent.weightSche > h5:first-of-type, .dashContainer .centerPart .dashContent.weightSche > h5:first-of-type, .dashContainer .rightPart .dashContent.weightSche > h5:first-of-type {
+          position: absolute;
+          top: 30px;
+          width: calc( 100% - 60px); }
+          @media all and (max-width: 991px) {
+            .dashContainer .leftPart .dashContent.weightSche > h5:first-of-type, .dashContainer .centerPart .dashContent.weightSche > h5:first-of-type, .dashContainer .rightPart .dashContent.weightSche > h5:first-of-type {
+              width: calc( 100% - 20px); } }
+        .dashContainer .leftPart .dashContent.weightSche p.weightScheDate, .dashContainer .centerPart .dashContent.weightSche p.weightScheDate, .dashContainer .rightPart .dashContent.weightSche p.weightScheDate {
+          font-size: 18px; }
+          .dashContainer .leftPart .dashContent.weightSche p.weightScheDate span, .dashContainer .centerPart .dashContent.weightSche p.weightScheDate span, .dashContainer .rightPart .dashContent.weightSche p.weightScheDate span {
+            font-size: 18px;
+            color: #179DAF;
+            font-weight: 800; }
+        .dashContainer .leftPart .dashContent.weightSche p.weightScheTarget span, .dashContainer .centerPart .dashContent.weightSche p.weightScheTarget span, .dashContainer .rightPart .dashContent.weightSche p.weightScheTarget span {
+          color: #1875AD; }
+        .dashContainer .leftPart .dashContent.weightSche .weightScheBlock, .dashContainer .centerPart .dashContent.weightSche .weightScheBlock, .dashContainer .rightPart .dashContent.weightSche .weightScheBlock {
+          width: 100%;
+          padding-top: 51px; }
+          .dashContainer .leftPart .dashContent.weightSche .weightScheBlock button, .dashContainer .centerPart .dashContent.weightSche .weightScheBlock button, .dashContainer .rightPart .dashContent.weightSche .weightScheBlock button {
+            margin-top: 15px; }
+      .dashContainer .leftPart .dashContent.pointReward, .dashContainer .centerPart .dashContent.pointReward, .dashContainer .rightPart .dashContent.pointReward {
+        position: relative;
+        width: 100%;
+        height: calc( 50% - 15px);
+        margin-top: 30px;
+        display: flex;
+        align-items: center; }
+        .dashContainer .leftPart .dashContent.pointReward > h5:first-of-type, .dashContainer .centerPart .dashContent.pointReward > h5:first-of-type, .dashContainer .rightPart .dashContent.pointReward > h5:first-of-type {
+          position: absolute;
+          top: 30px;
+          width: calc( 100% - 60px); }
+          @media all and (max-width: 991px) {
+            .dashContainer .leftPart .dashContent.pointReward > h5:first-of-type, .dashContainer .centerPart .dashContent.pointReward > h5:first-of-type, .dashContainer .rightPart .dashContent.pointReward > h5:first-of-type {
+              width: calc( 100% - 20px); } }
+        .dashContainer .leftPart .dashContent.pointReward .pointRewardContent, .dashContainer .centerPart .dashContent.pointReward .pointRewardContent, .dashContainer .rightPart .dashContent.pointReward .pointRewardContent {
+          width: 100%;
+          display: inline-block;
+          text-align: center;
+          margin-top: 51px; }
+          .dashContainer .leftPart .dashContent.pointReward .pointRewardContent .myAccountPoint, .dashContainer .centerPart .dashContent.pointReward .pointRewardContent .myAccountPoint, .dashContainer .rightPart .dashContent.pointReward .pointRewardContent .myAccountPoint {
+            margin-bottom: 5px;
+            text-align: center;
+            color: gray; }
+          .dashContainer .leftPart .dashContent.pointReward .pointRewardContent .manageMyAccount, .dashContainer .centerPart .dashContent.pointReward .pointRewardContent .manageMyAccount, .dashContainer .rightPart .dashContent.pointReward .pointRewardContent .manageMyAccount {
+            margin: 15px auto;
+            width: 100%;
+            max-width: 200px; }
+        .dashContainer .leftPart .dashContent.pointReward .countContainer, .dashContainer .centerPart .dashContent.pointReward .countContainer, .dashContainer .rightPart .dashContent.pointReward .countContainer {
+          text-align: center;
+          margin-bottom: 0px; }
+        .dashContainer .leftPart .dashContent.pointReward .Count, .dashContainer .centerPart .dashContent.pointReward .Count, .dashContainer .rightPart .dashContent.pointReward .Count {
+          padding-top: 0px;
+          font-size: 38px !important;
+          color: #179DAF !important;
+          width: 100%;
+          text-align: center; }
+      .dashContainer .leftPart .dashContent.systemNoti, .dashContainer .centerPart .dashContent.systemNoti, .dashContainer .rightPart .dashContent.systemNoti {
+        width: 100%;
+        height: 100%; }
+        .dashContainer .leftPart .dashContent.systemNoti table, .dashContainer .centerPart .dashContent.systemNoti table, .dashContainer .rightPart .dashContent.systemNoti table {
+          table-layout: fixed;
+          width: 100%; }
+          .dashContainer .leftPart .dashContent.systemNoti table td, .dashContainer .centerPart .dashContent.systemNoti table td, .dashContainer .rightPart .dashContent.systemNoti table td {
+            padding: 15px 0px;
+            border-bottom: 1px dashed lightgray; }
+        .dashContainer .leftPart .dashContent.systemNoti .titleContent, .dashContainer .centerPart .dashContent.systemNoti .titleContent, .dashContainer .rightPart .dashContent.systemNoti .titleContent {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          margin-bottom: 5px; }
+          .dashContainer .leftPart .dashContent.systemNoti .titleContent a, .dashContainer .centerPart .dashContent.systemNoti .titleContent a, .dashContainer .rightPart .dashContent.systemNoti .titleContent a {
+            color: #282A46 !important;
+            font-weight: 800; }
+            .dashContainer .leftPart .dashContent.systemNoti .titleContent a:hover, .dashContainer .leftPart .dashContent.systemNoti .titleContent a:active, .dashContainer .centerPart .dashContent.systemNoti .titleContent a:hover, .dashContainer .centerPart .dashContent.systemNoti .titleContent a:active, .dashContainer .rightPart .dashContent.systemNoti .titleContent a:hover, .dashContainer .rightPart .dashContent.systemNoti .titleContent a:active {
+              color: #179DAF !important; }
+          .dashContainer .leftPart .dashContent.systemNoti .titleContent + span, .dashContainer .centerPart .dashContent.systemNoti .titleContent + span, .dashContainer .rightPart .dashContent.systemNoti .titleContent + span {
+            font-size: 10px;
+            color: gray; }

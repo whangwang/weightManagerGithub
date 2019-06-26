@@ -1,0 +1,60 @@
+@import 'config';
+
+.header{
+    margin-top: 50px;
+    padding: 0px 60px;
+    @include pad-width{
+        background-color: white;
+        margin-top: 0px;
+        padding: 30px 15px;
+        @include lightShadow;
+    }
+    h5{
+        font-size: 10px;
+        color: $main-color;
+        display: inline-block;
+        span{
+            font-size: 18px;
+            color: $lb-color;
+            font-weight: 800;
+        }
+    }
+    .manageAuth{
+        float: right;
+        cursor: pointer;
+        p{
+            text-align: right;
+            color: $main-color;
+            display: inline-block;
+            line-height: 38px;
+            padding-left: 11px;
+            vertical-align: middle;
+        }
+        svg{
+            display: inline-block;
+            width: 22px;
+        }
+        &:hover{
+            p{
+                color: $lb-color;
+            }
+            svg{
+                fill: $lb-color;
+            }
+        }
+    }
+}
+
+.userModal{
+    .modalContent{
+        width: calc( 100vw - 30px );
+        max-width: 400px;
+        margin: 100px auto;
+        text-align: center;
+        padding: 15px;
+        p{
+            color: $lb-color;
+            font-size: 18px;
+        }
+    }
+}

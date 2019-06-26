@@ -1,0 +1,46 @@
+.header {
+  margin-top: 50px;
+  padding: 0px 60px; }
+  @media all and (max-width: 991px) {
+    .header {
+      background-color: white;
+      margin-top: 0px;
+      padding: 30px 15px;
+      -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+      -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08); } }
+  .header h5 {
+    font-size: 10px;
+    color: #282A46;
+    display: inline-block; }
+    .header h5 span {
+      font-size: 18px;
+      color: #1875AD;
+      font-weight: 800; }
+  .header .manageAuth {
+    float: right;
+    cursor: pointer; }
+    .header .manageAuth p {
+      text-align: right;
+      color: #282A46;
+      display: inline-block;
+      line-height: 38px;
+      padding-left: 11px;
+      vertical-align: middle; }
+    .header .manageAuth svg {
+      display: inline-block;
+      width: 22px; }
+    .header .manageAuth:hover p {
+      color: #1875AD; }
+    .header .manageAuth:hover svg {
+      fill: #1875AD; }
+
+.userModal .modalContent {
+  width: calc( 100vw - 30px);
+  max-width: 400px;
+  margin: 100px auto;
+  text-align: center;
+  padding: 15px; }
+  .userModal .modalContent p {
+    color: #1875AD;
+    font-size: 18px; }

@@ -1,0 +1,17 @@
+.selectUserDialog {
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+  height: 70vh;
+  padding: 30px;
+  margin: auto;
+  margin-top: calc( 15vh - 45px);
+  background-color: white; }
+  .selectUserDialog h5 {
+    color: #1875AD; }
+  .selectUserDialog .calcBMI {
+    color: #179DAF;
+    font-weight: 800;
+    font-size: 15px; }
+  .selectUserDialog p, .selectUserDialog a {
+    line-height: 32px; }

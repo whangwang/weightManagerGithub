@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('../layouts/include_header.ejs') %>
+    <link rel='stylesheet' href='/stylesheets/css/dash.css' />
+  </head>
+  <body>
+    <%- include('../layouts/header.ejs') %>
+    <% if(cele){ %>
+      <div id="container">
+        <h5>恭喜您成功達成目標!</h5>
+      </div>
+    <% } %>
+    <div class="modalBackground first_time_description">
+        <div class="modalContent">
+            <h5>歡迎使用體重管理系統！</h5>
+            <p>
+                本計畫旨在進行自主管理體重，以增進健康。參與者須先在體重管理app上登錄電子郵件、身高、體重等，並分別在登錄後兩週、一個月、三個月回到聯合醫院政大門診部(政大身心健康中心一樓)測量體重並紀錄到App上。於七月份，每週三早上8:30~11:30和每週四下午1:30~4:30都會有工作人員在政大門診部駐點，協助大家登錄體重。
+            </p>
+            <h5 class="timeDes">※ 倘若在首次登錄後兩週、一個月與三個月之外的時間點，亦想測量體重時，仍可依照工作人員所在的時間(每週三早上8:30~11:30和每週四下午1:30~4:30)，至政大門診部測量，並紀錄至app上</h5>
+        </div>
+    </div> 
+    <div class="mainContainer dashContainer">
+        <div class="row">
+                <div class="col-md-4 leftPart">
+                    <div class="dashContent weightLog">
+                        <h5>測量紀錄</h5>
+                        <canvas id="examChart" height="150"></canvas>
+                        <div class="logTable">
+                          <table>
+                              <% for(let i = 0;i < user_info.measureLogs.length;i++){ %>
+                                  <tr>
+                                      <td><%= user_info.measureLogs[i].weight %>kg</td>
+                                      <td><%= user_info.measureLogs[i].height %>cm</td>
+                                      <td><%= measureLogs[i] %></td>
+                                      <% if(i == 0){ %>
+                                          <td class="even">0kg － </td>
+                                      <% } else if(user_info.measureLogs[i-1].weight == user_info.measureLogs[i].weight){ %>
+                                           <td class="even">0kg － </td>
+                                      <% } else if(user_info.measureLogs[i-1].weight > user_info.measureLogs[i].weight){ %>
+                                          <td class="down"><%= user_info.measureLogs[i-1].weight - user_info.measureLogs[i].weight %>kg ▼	</td>
+                                      <% } else { %>
+                                          <td class="up"><%= user_info.measureLogs[i].weight - user_info.measureLogs[i-1].weight %>kg ▲ </td>
+                                      <% } %>
+                                  </tr>
+                              <% } %>
+                              <% if(user_info.measureLogs.length == 0){ %>
+                                  <tr>
+                                      <td>尚未進行第一次測量</td>
+                                  </tr>
+                              <% } %>
+                              <!-- <tr>
+                                  <td>65kg</td>
+                                  <td>177cm</td>
+                                  <td>2019.04.03</td>
+                                  <td class="down">10kg ▼	</td>
+                              </tr>
+                              <tr>
+                                  <td>65kg</td>
+                                  <td>177cm</td>
+                                  <td>2019.04.03</td>
+                                  <td class="up">8kg ▲ </td>
+                              </tr>
+                              <tr>
+                                  <td>65kg</td>
+                                  <td>177cm</td>
+                                  <td>2019.04.03</td>
+                                  <td class="even">0kg － </td>
+                              </tr>
+                              <tr>
+                                  <td>65kg</td>
+                                  <td>177cm</td>
+                                  <td>2019.04.03</td>
+                                  <td class="up">8kg ▲ </td>
+                              </tr>
+                              <tr>
+                                  <td>65kg</td>
+                                  <td>177cm</td>
+                                  <td>2019.04.03</td>
+                                  <td class="up">8kg ▲ </td>
+                              </tr>
+                              <tr>
+                                  <td>65kg</td>
+                                  <td>177cm</td>
+                                  <td>2019.04.03</td>
+                                  <td class="down">3kg ▼ </td>
+                              </tr> -->
+                          </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 centerPart">
+                    <div class="dashContent weightSche">
+                        <h5>測量行程</h5>
+                        <div class="weightScheBlock">
+                            <p class="weightScheDate">
+                                <% if(user_info.measureLogs.length == 0){ %>
+                                    您尚未進行第一次測量！
+                                <% } else if(!user_info.twoWeekGoal && !user_info.twoWeekGoalFailed){ %>
+                                    <% user_info.createDate = user_info.createDate.setDate(user_info.measureLogs[0].measureDate.getDate() + 14); %>
+                                    您的下次測量安排在&nbsp;<span><%= user_info.createDate.getFullYear() + '.' + (user_info.createDate.getMonth() + 1) + '.' + user_info.createDate.getDate() %></span>&nbsp;!
+                                <% } else if(!user_info.oneMonthGoal && !user_info.oneMonthGoalFailed){ %>
+                                    <% user_info.createDate = user_info.createDate.setDate(user_info.measureLogs[0].measureDate.getDate() + 30); %>
+                                    您的下次測量安排在&nbsp;<span><%= user_info.createDate.getFullYear() + '.' + (user_info.createDate.getMonth() + 1) + '.' + user_info.createDate.getDate() %></span>&nbsp;!
+                                <% } else if(!user_info.threeMonthGoal && !user_info.threeMonthGoalFailed){ %>
+                                    <% user_info.createDate = user_info.createDate.setDate(user_info.measureLogs[0].measureDate.getDate() + 90); %>
+                                    您的下次測量安排在&nbsp;<span><%= user_info.createDate.getFullYear() + '.' + (user_info.createDate.getMonth() + 1) + '.' + user_info.createDate.getDate() %></span>&nbsp;!
+                                <% } else { %>
+                                    您的測量已經結束!
+                                <% } %>
+                            </p>
+                            <p class="weightScheTarget">
+                                <% if(user_info.measureLogs.length == 0){ %>
+                                    尚無目標！
+                                <% } else if(!user_info.twoWeekGoal && !user_info.twoWeekGoalFailed){ %>
+                                    目標：&nbsp;<span>體重 < <%= user_info.oriWeight - 1 %>, BMI < <%= Math.round((user_info.oriWeight - 1)/((user_info.oriHeight/100)*(user_info.oriHeight/100)) * 10)/10 %></span>
+                                <% } else if(!user_info.oneMonthGoal && !user_info.oneMonthGoalFailed){ %>
+                                    目標：&nbsp;<span>體重 < <%= Math.round(user_info.oriWeight*0.95 * 10) / 10 %>, BMI < <%= Math.round((Math.round(user_info.oriWeight*0.95 * 10) / 10)/((user_info.oriHeight/100)*(user_info.oriHeight/100)) * 10)/10 %></span>
+                                <% } else if(!user_info.threeMonthGoal && !user_info.threeMonthGoalFailed){ %>
+                                    目標：&nbsp;<span>體重 < <%= Math.round(user_info.oriWeight*0.9 * 10) / 10 %>, BMI < <%= Math.round((Math.round(user_info.oriWeight*0.9 * 10) / 10)/((user_info.oriHeight/100)*(user_info.oriHeight/100)) * 10)/10 %></span>
+                                <% } else { %>
+                                    您的測量已經結束!
+                                <% } %>
+                            </p>
+                            <% if(!user_info.twoWeekGoal && !user_info.twoWeekGoalFailed){ %>
+                                <% user_info.createDate = user_info.createDate.setDate(user_info.createDate.getDate() + 14); %>
+                                <% if((user_info.createDate.getMonth() + 1) > 9){
+                                    month = user_info.createDate.getMonth() + 1;
+                                } else {
+                                    month = '0' + (user_info.createDate.getMonth() + 1);
+                                } %>
+                                <% if(user_info.createDate.getDate() > 9){
+                                    day = user_info.createDate.getDate();
+                                } else {
+                                    day = '0' + user_info.createDate.getDate();
+                                } %>
+                                <a target="_blank" href="http://www.google.com/calendar/event?action=TEMPLATE&text=政大體重量測&dates=<%= user_info.createDate.getFullYear() %><%= month %><%= day %>/<%= user_info.createDate.getFullYear() %><%= month %><%= day %>&details=到政大去%0A量體重&location=政治大學&trp=false"><button class="green">儲存至我的Google Calendar</button></a>
+                            <% } else if(!user_info.oneMonthGoal && !user_info.oneMonthGoalFailed){ %>
+                                <% user_info.createDate = user_info.createDate.setDate(user_info.createDate.getDate() + 30); %>
+                                <% if((user_info.createDate.getMonth() + 1) > 9){
+                                    month = user_info.createDate.getMonth();
+                                } else {
+                                    month = '0' + (user_info.createDate.getMonth());
+                                } %>
+                                <% if(user_info.createDate.getDate() > 9){
+                                    day = user_info.createDate.getDate();
+                                } else {
+                                    day = '0' + user_info.createDate.getDate();
+                                } %>
+                                <a target="_blank" href="http://www.google.com/calendar/event?action=TEMPLATE&text=政大體重量測&dates=<%= user_info.createDate.getFullYear() %><%= month %><%= day %>/<%= user_info.createDate.getFullYear() %><%= month %><%= day %>&details=到政大去%0A量體重&location=政治大學&trp=false"><button class="green">儲存至我的Google Calendar</button></a>
+                            <% } else if(!user_info.threeMonthGoal && !user_info.threeMonthGoalFailed){ %>
+                                <% user_info.createDate = user_info.createDate.setDate(user_info.createDate.getDate() + 90); %>
+                                <% if((user_info.createDate.getMonth() + 1) > 9){
+                                    month = user_info.createDate.getMonth() + 1;
+                                } else {
+                                    month = '0' + (user_info.createDate.getMonth() + 1);
+                                } %>
+                                <% if(user_info.createDate.getDate() > 9){
+                                    day = user_info.createDate.getDate();
+                                } else {
+                                    day = '0' + user_info.createDate.getDate();
+                                } %>
+                                <a target="_blank" href="http://www.google.com/calendar/event?action=TEMPLATE&text=政大體重量測&dates=<%= user_info.createDate.getFullYear() %><%= month %><%= day %>/<%= user_info.createDate.getFullYear() %><%= month %><%= day %>&details=到政大去%0A量體重&location=政治大學&trp=false"><button class="green">儲存至我的Google Calendar</button></a>
+                            <% } else { %>
+                                <button disabled class="green">您的測量行程已完成!</button>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="dashContent pointReward">
+                        <h5>我的帳戶</h5>
+                        <div class="pointRewardContent">
+                            <p class="myAccountPoint">累積獎勵</p>
+                            <p class="Count"><%= user_info.points %></p>
+                            <button class="green manageMyAccount" onClick="window.location = '/users/account'">管理</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 rightPart">
+                    <div class="dashContent systemNoti">
+                        <h5>系統通知</h5>
+                        <table>
+                            <% for(let i in notif_list){ %>
+                                <tr>
+                                  <td>
+                                    <div class="titleContent"><a href="#"><%= notif_list[i].description %></a></div>
+                                    <span><%= notif_list[i].createDate.getFullYear() + '.' + (notif_list[i].createDate.getMonth()+1) + '.' + notif_list[i].createDate.getDate() %></span>
+                                  </td>
+                                </tr>
+                            <% } %>
+                          <!-- <tr>
+                            <td>
+                              <div class="titleContent"><a href="#">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorems</a></div>
+                              <span>2019.04.30</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="titleContent"><a href="#">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorems</a></div>
+                              <span>2019.04.30</span>
+                            </td>
+                          </tr> -->
+                        </table>
+                    </div>
+                </div>
+        </div>
+    </div>
+  </body>
+  <% if(cele){ %>
+      <%- include('../layouts/firework.ejs') %>
+  <% } %>
+  <script>
+        jQuery.easing.def = "easeOutExpo";
+        let chartHeight = 0;
+        $(window).resize(function(){
+          chartHeight = $('#examChart').height();
+          $('.logTable').css('height', 'calc( 100% - '+chartHeight+'px )');
+        });
+        $(document).ready(function(){
+          <% if(first_time) { %>
+            openModal($('.first_time_description'));
+          <% } %>
+          if(small){
+              $(".weightSche").before($(".pointReward"));
+              $(".leftPart").before($(".centerPart"));
+          }
+          chartHeight = $('#examChart').height();
+          $('.logTable').css('height', 'calc( 100% - '+chartHeight+'px )');
+          let el = document.querySelector('.Count');
+          let od = new Odometer({
+            el: el,
+            value: 0,
+            // Any option (other than auto and selector) can be passed in here
+            format: '(,ddd)',
+            theme: 'default'
+          });
+          od.update(<%= user_info.points %>);
+          $('body').on('click','#container',function(){
+            $('#container').fadeOut(500, function(){
+              $('#container').remove();
+            });
+          });
+          $('body').on('click','canvas',function(){
+            $('#container').fadeOut(500, function(){
+              $('#container').remove();
+            });
+          });
+        });
+        let ctx = document.getElementById("examChart").getContext("2d");
+        $.post('/users/get_chart',function(rsp){
+            let myChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: rsp.labels,
+                datasets: [{
+                  label: '體重',
+                  data: rsp.weight_datasets,
+                  backgroundColor: rsp.bmi_bgcolor,
+                  borderColor: rsp.bmi_bdcolor,
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            fontSize: 10,
+                            min: Math.round(parseInt(rsp.min_weight)/5-1)*5,
+                            max: Math.round(parseInt(rsp.max_weight)/5+1)*5,
+                        }
+                    }]
+                },
+                legend: {
+                    onClick: (e) => e.stopPropagation()
+                }
+              }
+            });
+        })
+  </script>
+</html>

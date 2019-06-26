@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('../layouts/include_header.ejs') %>
+    <link rel='stylesheet' href='/stylesheets/css/account.css' />
+  </head>
+  <body>
+    <%- include('../layouts/header.ejs') %>
+    <div class="modalBackground transferPoint">
+        <div class="modalContent">
+            <div class="inputForm">
+                <div class="inputUnit half">
+                    <h5>轉出帳號</h5>
+                    <p><%= user_info.account %></p>
+                </div><div class="inputUnit half right">
+                    <h5>轉入帳號</h5>
+                    <input id="transfer_account" type="text" placeholder="請輸入您要轉入的帳號">
+                </div>
+                <div class="inputUnit">
+                    <h5>轉出點數</h5>
+                    <input id="transfer_point" type="text" placeholder="請輸入您要轉出的點數">
+                </div>
+                <div class="modalDecision">
+                    <button class="red modalClose" data-target=".transferPoint">取消</button><button class="green modalClose" id="confirmed_transfer" data-target=".transferPoint">確認轉出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modalBackground confirmTransferModal">
+        <div class="modalContent">
+            <h5 class="warningTitle" id="confirmTransferModal-warningTitle">您將轉讓 1000 點給以下使用者：</h5>
+            <p id="confirmed_account"></p>
+            <div class="inputUnit">
+                <h5>請輸入您的密碼確認此項操作</h5>
+                <input id="confirmTransferModal-password" name="comfrimExchangePassword" type="password" placeholder="請輸入您的密碼確認此項操作" />
+            </div>
+            <div class="modalDecision">
+                <button class="red modalClose" data-target=".confirmTransferModal">取消</button><button class="green modalClose transfer-btn" data-target=".confirmTransferModal" onClick="toast('轉帳成功！','success');">確認</button>
+            </div>
+        </div>
+    </div>
+    <div class="modalBackground confirmProductModal">
+        <div class="modalContent">
+            <h5 class="warningTitle" id="confirmProductModal-warningTitle">您將使用 1000 點來兌換：</h5>
+            <p id="confirmProductModal-productName">XXXXXXXXXXXXXXX</p>
+            <div class="inputUnit">
+                <h5>請輸入您的密碼確認此項操作</h5>
+                <input id="confirmProductModal-password" name="comfrimExchangePassword" type="password" placeholder="請輸入您的密碼確認此項操作" />
+            </div>
+            <div class="modalDecision">
+                <button class="red modalClose" data-target=".confirmProductModal">取消</button><button class="green modalClose buy_product-btn" data-target=".confirmProductModal">兌換</button>
+            </div>
+        </div>
+    </div>
+    <div class="modalBackground productModal">
+        <div class="modalContent">
+            <div class="productModalLeft">
+                <div class="productModalImg"></div>
+            </div><div class="productModalRight">
+                <img id="productModalImg" src=""></img>
+                <span id="productModalPoint">1000 點</span>
+                <h5 id="productModalTitle">XXXXXXXXXXXXXXX</h5>
+                <p id="productModalDescription">product description。</p>
+                <div class="modalDecision">
+                    <button class="red modalClose" data-target=".productModal">取消</button><button class="green confirmExchange">兌換</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modalBackground productUseModal">
+        <div class="modalContent">
+            <table>
+                <tr>
+                    <td><h5>四位數密碼</h5><span class="authCode"></span></td>
+                    <td><p>點擊以下連結進入兌換網頁後，輸入四位數密碼使用優惠卷！</p></td>
+                </tr>
+            </table>
+            <div class="urlArea"><a href="" target="_blank"><p class="forPC"></p><p class="mobileGoBtn">前往網站</p></a></div>
+        </div>
+    </div>
+    <div class="mainContainer accountContainer">
+        <div class="row">
+            <div class="accountDetail" id="accountDetail">
+                <div class="dashContent">
+                    <div class="accountControl">
+                        <p class="scrollHint">向上滑動檢視帳號資訊</p>
+                        <div class="accountTransferContainer">
+                            <button class="white accountTransfer modalAnchor" data-target=".transferPoin" style="display: none;">轉帳</button>
+                        </div>
+                        <p>我的餘額</p>
+                        <h5><%= user_info.points %><span>點</span></h5>
+                    </div>
+                    <div class="rewardInfo">
+                        <div class="rewardSwitchTab">
+                            <div class="toMyCoupon active" data-to="myCoupon">我的優惠券</div><div
+                            class="toGetCoupon" data-to="getCoupon">兌換優惠券</div><div
+                            class="toViewTrans" data-to="viewTrans">交易紀錄</div>
+                        </div>
+                        <table class="toggleTab tableTitle myCoupon active">
+                            <tr>
+                                <th>兌換碼</th>
+                                <th>優惠券名稱</th>
+                                <th>使用期限</th>
+                                <th></th>
+                            </tr>
+                        </table>
+                        <div class="toggleTab rewardTab myCoupon active">
+                            <table>
+                                <% for(let i in user_coupon_list){ %>
+                                    <tr>
+                                        <td><%= user_coupon_list[i].authCode %></td>
+                                        <td><%= user_coupon_list[i].productName %><p class="mobileExpiry">(到期日：<%= user_coupon_list[i].expiryDate %>)</p></td>
+                                        <td><%= user_coupon_list[i].expiryDate %></td>
+                                        <td class="active"><a href="javascript: useProduct('<%= user_coupon_list[i].url %>' + '/Landing?desktop=true','<%= user_coupon_list[i].authCode %>');">馬上使用</a></td>
+                                        <!--  <td class="active"><a href="<%= user_coupon_list[i].url %>" target="_blank">馬上使用</a></td> -->
+                                    </tr>
+                                <% } %>
+                                <!-- <tr>
+                                    <td>132837</td>
+                                    <td>XXXXXXXXXXXXXXXX</td>
+                                    <td class="active">馬上使用</td>
+                                </tr>
+                                <tr class="used">
+                                    <td>374625</td>
+                                    <td>OOOOOOOOOOOOOOOO</td>
+                                    <td>已使用</td>
+                                </tr> -->
+                            </table>
+                        </div>
+                        <table class="toggleTab tableTitle getCoupon">
+                            <tr>
+                                <th>
+                                    <div class="couponScrollContainer">
+                                        <div class="couponCateScroll">
+                                            <% for(let i in Object.keys(coupon_cate)){ %>
+                                                <span class="couponCate<% if(i==0){ %> active<% } %>"><%= Object.keys(coupon_cate)[i] %></span>
+                                            <% } %>
+                                            <!-- <span class="couponCate disabled">7-ELEVEN(即將上架)</span>
+                                            <span class="couponCate disabled">全家(即將上架)</span>
+                                            -->
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                        <div class="toggleTab rewardTab getCoupon">
+                            <table class="getCouponTable">
+                                <% for(let i in coupon_obj){ %>
+                                    <tr class="productToBuy" data-img="<%= coupon_to_img[i] %>" data-name="<%= i %>" data-point="<%= coupon_category[i] %>" data-cate="<%= coupon_to_cate[i] %>">
+                                        <td><%= i %></td>
+                                        <td class="active"><%= coupon_category[i] %> 點(剩餘：<%= coupon_obj[i].length %>)</td>
+                                    </tr>
+                                <% } %>
+                            </table>
+                            <!-- <div class="row"> -->
+                                <!-- <div class="col-md-3 col-sm-6 productToBuy">
+                                    <div class="productImg"></div>
+                                    <p>OOOOOOOOOOOOOOOOO</p>
+                                    <span>1000 點</span>
+                                </div>
+                                <div class="col-md-3 col-sm-6 productToBuy">
+                                    <div class="productImg"></div>
+                                    <p>OOOOOOOOOOOOOOOOO</p>
+                                    <span>1000 點</span>
+                                </div>
+                                <div class="col-md-3 col-sm-6 productToBuy">
+                                    <div class="productImg"></div>
+                                    <p>OOOOOOOOOOOOOOOOO</p>
+                                    <span>1000 點</span>
+                                </div>
+                                <div class="col-md-3 col-sm-6 productToBuy">
+                                    <div class="productImg"></div>
+                                    <p>OOOOOOOOOOOOOOOOO</p>
+                                    <span>1000 點</span>
+                                </div>
+                                <div class="col-md-3 col-sm-6 productToBuy">
+                                    <div class="productImg"></div>
+                                    <p>OOOOOOOOOOOOOOOOO</p>
+                                    <span>1000 點</span>
+                                </div> -->
+                            <!-- </div> -->
+                        </div>
+                        <div class="toggleTab viewTrans">
+                            <table class="tableTitle">
+                                <tr>
+                                    <th>日期</th>
+                                    <th>名目</th>
+                                    <th>收入/支出</th>
+                                </tr>
+                            </table>
+                            <div class="transactionWrapper">
+                                <table class="transactionTable">
+                                    <% for(let i in transactionLogs){ %>
+                                        <tr>
+                                            <td><%= transactionLogs[i].date %></td>
+                                            <td><%= transactionLogs[i].transactionMessage %><p><%= transactionLogs[i].date %></p></td>
+                                            <% if(transactionLogs[i].inorout){ %>
+                                                <td class="pos">+<%= transactionLogs[i].points %></td>
+                                            <% } else { %>
+                                                <td class="neg">-<%= transactionLogs[i].points %></td>
+                                            <% } %>
+                                        </tr>
+                                    <% } %>
+
+                                    <!-- <tr>
+                                        <td>2019/04/20</td>
+                                        <td>轉帳</td>
+                                        <td class="neg">-1,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2019/04/20</td>
+                                        <td>系統發送</td>
+                                        <td>+1,000</td>
+                                    </tr> -->
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="transaction">
+                <div class="dashContent">
+                    <h5>交易紀錄</h5>
+                    <table class="tableTitle">
+                        <tr>
+                            <th>日期</th>
+                            <th>名目</th>
+                            <th>收入/支出</th>
+                        </tr>
+                    </table>
+                    <div class="transactionWrapper">
+                        <table class="transactionTable">
+                            <% for(let i in transactionLogs){ %>
+                                <tr>
+                                    <td><%= transactionLogs[i].date %></td>
+                                    <td><%= transactionLogs[i].transactionMessage %></td>
+                                    <% if(transactionLogs[i].inorout){ %>
+                                        <td>+<%= transactionLogs[i].points %></td>
+                                    <% } else { %>
+                                        <td class="neg">-<%= transactionLogs[i].points %></td>
+                                    <% } %>
+                                </tr>
+                            <% } %>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="imageToLoad" style="display: none;">    
+        <% Object.keys(coupon_to_img).forEach(function(obj){ %>
+            <img class="toLoad" src="<%= coupon_to_img[obj] %>" />
+        <% }) %>
+    </div>
+    <script>
+        function useProduct(url, aid){
+            $('.productUseModal .authCode').html(aid);
+            $('.productUseModal .urlArea>a').attr('href',url);
+            $('.productUseModal .urlArea>a>p.forPC').html(url);
+            copyStringToClipboard(aid);
+            toast('已複製您的四位數密碼！','success');
+            openModal($('.productUseModal'));
+        }
+        $(document).ready(function(){
+            $('.imageToLoad').imagesLoaded();
+            if(small){
+                let t = setTimeout(function(){
+                    window.location = "#accountDetail"
+                },10);
+            }
+            let couponCate = JSON.parse('<%- JSON.stringify(coupon_cate) %>');
+            let coupon_obj = JSON.parse('<%- JSON.stringify(coupon_obj) %>')
+            let selectCoupon = [];
+            function refreshCate(){
+                selectCoupon = [];
+                $('.couponCate').each(function(){
+                    if($(this).hasClass('active'))selectCoupon.push($(this).html());
+                });
+                $('.getCouponTable tr').each(function(){
+                    if(selectCoupon.includes($(this).data('cate')))$(this).css('display','table-row');
+                    else $(this).hide();
+                });
+            };
+            refreshCate();
+            $('body').on('click','.couponCate:not(.disabled)',function(){
+                if($(this).hasClass('active'))$(this).removeClass('active');
+                else $(this).addClass('active');
+                refreshCate();
+            });
+            $('body').on('click','.rewardSwitchTab>div',function(){
+                $('.rewardSwitchTab>div').removeClass('active');
+                $(this).addClass('active');
+                $('.toggleTab').removeClass('active');
+                $('.'+$(this).data('to')).addClass('active');
+            });
+            $('body').on('click','.productToBuy',function(){
+                $('#productModalPoint').text($(this).data('point') + " 點");
+                $('#productModalTitle').text($(this).data('name'));
+                $('#productModalDescription').text($(this).data('name'));
+                $('#productModalImg').attr('src',$(this).data('img'));
+                $('#confirmProductModal-warningTitle').text("您將使用 " + $(this).data('point') + " 點來兌換：");
+                $('#confirmProductModal-productName').text($(this).data('name'))
+
+                openModal($('.productModal'));
+            });
+            $('body').on('click','.confirmExchange',function(){
+                closeModal($('.productModal'));
+                openModal($('.confirmProductModal'));
+            });
+            $('body').on('click','.buy_product-btn',function(){
+                let data = {
+                    productName:$('#productModalTitle').text(),
+                    password:md5($('#confirmProductModal-password').val(), '<%= user_info.account %>')
+                }
+                if($('#confirmProductModal-password').val()){
+                    $.post('/api/buy_product',data,function(rsp){
+                        if(rsp.status){
+                            toast('兌換成功！','success');
+                            location.reload();
+                        } else {
+                            toast(rsp.message,'danger');
+                        }
+                    })
+                } else {
+                    toast("請輸入密碼",'danger');
+                }
+            })
+
+            $('body').on('click','#confirmed_transfer',function(){
+                if($('#transfer_point').val() && $('#transfer_account').val() && $('#transfer_point').val() > 0){
+                    $('#confirmTransferModal-warningTitle').text('您將轉讓 ' + $('#transfer_point').val() + ' 點給以下使用者：');
+                    $('#confirmed_account').text($('#transfer_account').val())
+                    openModal($('.confirmTransferModal'));
+                } else {
+                    toast('請輸入轉入點數以及帳號','danger');
+                }
+            })
+
+            $('body').on('click','.transfer-btn',function(){
+                if($('#transfer_point').val() && $('#transfer_account').val() && $('#transfer_point').val() > 0){
+                    let data = {};
+                    data.point = $('#transfer_point').val();
+                    data.account = $('#transfer_account').val();
+                    $.post('/hahaha/transPt',data,function(rsp){
+                        if(rsp.status){
+                            toast('轉換成功！','success');
+                            location.reload();
+                        } else {
+                            toast(rsp.message,'danger');
+                        }
+                    })
+                } else {
+                    toast('請輸入轉入點數以及帳號','danger');
+                }
+            })
+        });
+    </script>
+  </body>
+</html>

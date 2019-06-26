@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <%- include('../layouts/include_header.ejs') %>
+        <link rel='stylesheet' href='/stylesheets/css/selectUser.css' />
+    </head>
+    <body>
+        <%- include('../layouts/admin_header.ejs') %>
+        <div class="container">
+            <div class="selectUserDialog">
+                <div class="inputForm">
+                    <div class="inputUnit">
+                        <h5>受測者帳號</h5>
+                        <input name="email" type="text" placeholder="請輸入您的帳號">
+                    </div>
+                    <div class="btnGroup two">
+                        <button>清空</button><button 
+                        class="green" id="submit">送出</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        $(document).ready(function(){
+            $('body').on('click', '#submit', function(){
+                window.location = '/admin/inputData?account='+$('input[name=email]').val();
+            });
+        });
+    </script>
+</html>

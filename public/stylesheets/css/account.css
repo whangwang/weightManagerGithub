@@ -1,0 +1,535 @@
+.row {
+  margin-left: 0px;
+  margin-right: 0px; }
+
+@media all and (max-width: 1300px) {
+  .transaction {
+    display: none; } }
+
+.transaction h5:first-of-type {
+  color: #1875AD; }
+
+.transaction .tableTitle {
+  width: 100%;
+  margin-top: 60px; }
+  .transaction .tableTitle tr th {
+    line-height: 37px;
+    text-align: left;
+    font-weight: 800;
+    border-bottom: 1px solid #1875AD; }
+    .transaction .tableTitle tr th:first-of-type {
+      width: 110px;
+      padding-left: 10px; }
+    .transaction .tableTitle tr th:last-of-type {
+      width: 110px;
+      text-align: right;
+      padding-right: 10px; }
+
+.transaction .transactionWrapper {
+  height: calc( 100vh - 386px);
+  overflow: auto; }
+
+.transaction .transactionTable {
+  width: 100%;
+  margin-top: 0px; }
+  .transaction .transactionTable tr {
+    cursor: pointer; }
+    .transaction .transactionTable tr td {
+      padding: 15px 0px;
+      text-align: left;
+      border-bottom: 1px dashed lightgray; }
+      .transaction .transactionTable tr td:first-of-type {
+        width: 110px;
+        padding-left: 10px; }
+      .transaction .transactionTable tr td:last-of-type {
+        width: 110px;
+        padding-right: 10px;
+        text-align: right;
+        color: green; }
+        .transaction .transactionTable tr td:last-of-type.neg {
+          color: #bd4242; }
+    .transaction .transactionTable tr:hover td {
+      background-color: #f3f3f3; }
+
+.viewTrans {
+  display: none; }
+  .viewTrans.active {
+    display: block; }
+  .viewTrans .tableTitle {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 60px; }
+    @media all and (max-width: 991px) {
+      .viewTrans .tableTitle {
+        margin-top: 30px; } }
+    .viewTrans .tableTitle tr th {
+      line-height: 37px;
+      text-align: left;
+      font-weight: 800;
+      border-bottom: 1px solid #1875AD; }
+      .viewTrans .tableTitle tr th:first-of-type {
+        width: 110px;
+        padding-left: 10px; }
+        @media all and (max-width: 991px) {
+          .viewTrans .tableTitle tr th:first-of-type {
+            display: none; } }
+      .viewTrans .tableTitle tr th:last-of-type {
+        width: 110px;
+        text-align: right;
+        padding-right: 10px; }
+  .viewTrans .transactionWrapper {
+    height: calc( 100% - 137px);
+    overflow: auto; }
+  .viewTrans .transactionTable {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 0px; }
+    .viewTrans .transactionTable tr {
+      cursor: pointer; }
+      .viewTrans .transactionTable tr td {
+        padding: 15px 0px;
+        text-align: left;
+        border-bottom: 1px dashed lightgray; }
+        .viewTrans .transactionTable tr td:first-of-type {
+          width: 110px;
+          padding-left: 10px; }
+          @media all and (max-width: 991px) {
+            .viewTrans .transactionTable tr td:first-of-type {
+              display: none; } }
+        .viewTrans .transactionTable tr td:last-of-type {
+          width: 110px;
+          padding-right: 10px;
+          text-align: right;
+          color: green; }
+          .viewTrans .transactionTable tr td:last-of-type.neg {
+            color: #bd4242; }
+        .viewTrans .transactionTable tr td p {
+          display: none;
+          color: gray;
+          margin-bottom: 0px; }
+          @media all and (max-width: 991px) {
+            .viewTrans .transactionTable tr td p {
+              display: block; } }
+      .viewTrans .transactionTable tr:hover td {
+        background-color: #f3f3f3; }
+
+.accountContainer {
+  height: calc( 100vh - 200px);
+  margin-top: 50px;
+  padding: 0px 60px; }
+  @media all and (max-width: 991px) {
+    .accountContainer {
+      height: auto;
+      min-height: 100vh;
+      padding: 0px;
+      margin-top: 0px !important; } }
+  .accountContainer .row {
+    height: 100%; }
+  .accountContainer .accountDetail {
+    width: 65%;
+    padding-right: 15px; }
+    @media all and (max-width: 1300px) {
+      .accountContainer .accountDetail {
+        width: 100%; } }
+    @media all and (max-width: 991px) {
+      .accountContainer .accountDetail {
+        padding-right: 0px; } }
+    .accountContainer .accountDetail .accountControl {
+      background-color: #179DAF;
+      width: calc( 100% + 60px);
+      margin-left: -30px;
+      margin-top: -30px;
+      padding: 30px;
+      margin-bottom: 30px;
+      color: white;
+      position: relative; }
+      @media all and (max-width: 991px) {
+        .accountContainer .accountDetail .accountControl {
+          width: calc( 100% + 20px);
+          margin-left: -10px;
+          margin-bottom: 0px;
+          padding-top: 60px; } }
+      .accountContainer .accountDetail .accountControl .accountTransferContainer {
+        float: right;
+        margin-top: 18.5px; }
+        .accountContainer .accountDetail .accountControl .accountTransferContainer button {
+          min-width: 150px; }
+      .accountContainer .accountDetail .accountControl p {
+        color: white; }
+      .accountContainer .accountDetail .accountControl h5 {
+        font-weight: 800;
+        font-size: 30px;
+        margin-bottom: 0px; }
+        .accountContainer .accountDetail .accountControl h5 span {
+          font-size: 15px;
+          color: white;
+          font-weight: 800;
+          margin-left: 15px;
+          line-height: 48px; }
+    .accountContainer .accountDetail .rewardInfo {
+      text-align: center;
+      height: calc( 100% - 134px); }
+      @media all and (max-width: 991px) {
+        .accountContainer .accountDetail .rewardInfo {
+          height: auto; } }
+    .accountContainer .accountDetail .rewardTab {
+      margin-top: 60px;
+      height: calc( 100% - 97px);
+      overflow: auto;
+      display: none; }
+      .accountContainer .accountDetail .rewardTab.myCoupon {
+        margin-top: 0px;
+        height: calc( 100% - 137px); }
+      .accountContainer .accountDetail .rewardTab.getCoupon {
+        margin-top: 0px;
+        height: calc( 100% - 137px); }
+      .accountContainer .accountDetail .rewardTab.active {
+        display: block; }
+      @media all and (max-width: 991px) {
+        .accountContainer .accountDetail .rewardTab {
+          height: auto; } }
+    .accountContainer .accountDetail table.myCoupon {
+      display: none; }
+      .accountContainer .accountDetail table.myCoupon.active {
+        display: table;
+        margin-top: 60px; }
+        @media all and (max-width: 991px) {
+          .accountContainer .accountDetail table.myCoupon.active {
+            margin-top: 30px; } }
+      .accountContainer .accountDetail table.myCoupon {
+        width: 100%;
+        text-align: left;
+        max-width: 800px;
+        margin: auto; }
+        .accountContainer .accountDetail table.myCoupon tr th {
+          height: 37px;
+          line-height: 37px;
+          font-weight: 800;
+          color: #282A46;
+          border-bottom: 1px solid #1875AD; }
+          .accountContainer .accountDetail table.myCoupon tr th:first-of-type {
+            padding-left: 10px;
+            width: 140px; }
+            @media all and (max-width: 991px) {
+              .accountContainer .accountDetail table.myCoupon tr th:first-of-type {
+                display: none; } }
+          .accountContainer .accountDetail table.myCoupon tr th:nth-of-type(3) {
+            width: 150px; }
+            @media all and (max-width: 991px) {
+              .accountContainer .accountDetail table.myCoupon tr th:nth-of-type(3) {
+                display: none; } }
+          .accountContainer .accountDetail table.myCoupon tr th:last-of-type {
+            width: 110px; }
+        .accountContainer .accountDetail table.myCoupon tr td {
+          height: 50px;
+          border-bottom: 1px dashed lightgray; }
+          .accountContainer .accountDetail table.myCoupon tr td:first-of-type {
+            padding-left: 10px;
+            width: 140px; }
+            @media all and (max-width: 991px) {
+              .accountContainer .accountDetail table.myCoupon tr td:first-of-type {
+                display: none; } }
+          .accountContainer .accountDetail table.myCoupon tr td:last-of-type {
+            padding-right: 10px;
+            width: 110px;
+            text-align: right; }
+    .accountContainer .accountDetail table.getCoupon {
+      display: none; }
+      .accountContainer .accountDetail table.getCoupon.active {
+        display: table;
+        margin-top: 60px; }
+        @media all and (max-width: 991px) {
+          .accountContainer .accountDetail table.getCoupon.active {
+            margin-top: 30px; } }
+      .accountContainer .accountDetail table.getCoupon {
+        width: 100%;
+        text-align: left;
+        max-width: 800px;
+        margin: auto; }
+        .accountContainer .accountDetail table.getCoupon tr th {
+          height: 37px;
+          line-height: 37px;
+          font-weight: 800;
+          color: #282A46;
+          border-bottom: 1px solid #1875AD;
+          width: 100%;
+          padding-left: 10px;
+          position: relative; }
+          .accountContainer .accountDetail table.getCoupon tr th .couponScrollContainer {
+            overflow-x: auto;
+            width: 100%;
+            position: absolute;
+            width: calc( 100% - 20px);
+            left: 10px;
+            top: 0px; }
+          .accountContainer .accountDetail table.getCoupon tr th .couponCateScroll {
+            white-space: nowrap; }
+          .accountContainer .accountDetail table.getCoupon tr th span {
+            border-radius: 8px;
+            background-color: transparent;
+            color: #179DAF;
+            padding: 5px 10px;
+            cursor: pointer;
+            white-space: nowrap; }
+            .accountContainer .accountDetail table.getCoupon tr th span:not(.disabled):hover {
+              color: #1dc5dc; }
+            .accountContainer .accountDetail table.getCoupon tr th span.active {
+              background-color: #179DAF;
+              color: white !important; }
+              .accountContainer .accountDetail table.getCoupon tr th span.active:hover {
+                background-color: #1dc5dc; }
+            .accountContainer .accountDetail table.getCoupon tr th span.disabled {
+              cursor: not-allowed !important;
+              color: gray; }
+    .accountContainer .accountDetail div.myCoupon > table, .accountContainer .accountDetail div.getCoupon > table {
+      width: 100%;
+      text-align: left;
+      max-width: 800px;
+      margin: auto; }
+      .accountContainer .accountDetail div.myCoupon > table .mobileExpiry, .accountContainer .accountDetail div.getCoupon > table .mobileExpiry {
+        display: none;
+        margin-bottom: 0px;
+        color: gray; }
+        @media all and (max-width: 991px) {
+          .accountContainer .accountDetail div.myCoupon > table .mobileExpiry, .accountContainer .accountDetail div.getCoupon > table .mobileExpiry {
+            display: block; } }
+      .accountContainer .accountDetail div.myCoupon > table tr th, .accountContainer .accountDetail div.getCoupon > table tr th {
+        height: 37px;
+        line-height: 37px;
+        font-weight: 800;
+        color: #282A46;
+        border-bottom: 1px solid #1875AD; }
+        .accountContainer .accountDetail div.myCoupon > table tr th:first-of-type, .accountContainer .accountDetail div.getCoupon > table tr th:first-of-type {
+          padding-left: 10px;
+          width: 140px; }
+        .accountContainer .accountDetail div.myCoupon > table tr th:last-of-type, .accountContainer .accountDetail div.getCoupon > table tr th:last-of-type {
+          width: 110px; }
+      .accountContainer .accountDetail div.myCoupon > table tr td, .accountContainer .accountDetail div.getCoupon > table tr td {
+        height: 50px;
+        border-bottom: 1px dashed lightgray; }
+        @media all and (max-width: 991px) {
+          .accountContainer .accountDetail div.myCoupon > table tr td, .accountContainer .accountDetail div.getCoupon > table tr td {
+            height: auto;
+            line-height: normal;
+            padding: 10px 0px; } }
+        .accountContainer .accountDetail div.myCoupon > table tr td:first-of-type, .accountContainer .accountDetail div.getCoupon > table tr td:first-of-type {
+          padding-left: 10px; }
+        .accountContainer .accountDetail div.myCoupon > table tr td:last-of-type, .accountContainer .accountDetail div.getCoupon > table tr td:last-of-type {
+          padding-right: 10px;
+          width: 180px;
+          text-align: right; }
+      .accountContainer .accountDetail div.myCoupon > table:not(.tableTitle) tr:not(.used), .accountContainer .accountDetail div.getCoupon > table:not(.tableTitle) tr:not(.used) {
+        cursor: pointer; }
+        .accountContainer .accountDetail div.myCoupon > table:not(.tableTitle) tr:not(.used):hover td, .accountContainer .accountDetail div.getCoupon > table:not(.tableTitle) tr:not(.used):hover td {
+          background-color: #f3f3f3; }
+        .accountContainer .accountDetail div.myCoupon > table:not(.tableTitle) tr:not(.used) > td:last-of-type, .accountContainer .accountDetail div.getCoupon > table:not(.tableTitle) tr:not(.used) > td:last-of-type {
+          color: #179DAF; }
+      .accountContainer .accountDetail div.myCoupon > table:not(.tableTitle) tr.used, .accountContainer .accountDetail div.getCoupon > table:not(.tableTitle) tr.used {
+        opacity: .4;
+        cursor: not-allowed; }
+    .accountContainer .accountDetail div.myCoupon > table tr td:first-of-type {
+      width: 140px; }
+      @media all and (max-width: 991px) {
+        .accountContainer .accountDetail div.myCoupon > table tr td:first-of-type {
+          display: none; } }
+    .accountContainer .accountDetail div.myCoupon > table tr td:nth-of-type(3) {
+      width: 150px; }
+      @media all and (max-width: 991px) {
+        .accountContainer .accountDetail div.myCoupon > table tr td:nth-of-type(3) {
+          display: none; } }
+    .accountContainer .accountDetail div.myCoupon > table tr td:last-of-type {
+      width: 110px; }
+  .accountContainer .transaction {
+    padding-left: 15px;
+    width: 35%; }
+  .accountContainer .dashContent {
+    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+    background-color: white;
+    padding: 30px;
+    height: calc( 100vh - 200px); }
+    .accountContainer .dashContent h5.title {
+      text-align: center;
+      color: #1875AD; }
+    @media all and (max-width: 991px) {
+      .accountContainer .dashContent {
+        height: auto;
+        min-height: 100vh;
+        padding: 30px 10px; } }
+
+.scrollHint {
+  display: none;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 0px;
+  background-color: #096f7b;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  line-height: 30px;
+  position: absolute;
+  left: 0px;
+  top: 0px; }
+  @media all and (max-width: 991px) {
+    .scrollHint {
+      display: block; } }
+
+@media all and (max-width: 991px) {
+  .rewardSwitchTab {
+    width: calc( 100% + 20px);
+    margin-left: -10px;
+    background-color: #179DAF; } }
+
+.rewardSwitchTab > div {
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+  height: 37px;
+  color: lightgray;
+  border-bottom: 2px solid lightgray;
+  user-select: none;
+  line-height: 37px;
+  cursor: pointer; }
+  @media all and (max-width: 991px) {
+    .rewardSwitchTab > div {
+      width: calc( 100% / 3);
+      color: #f7f7f7;
+      border-bottom-width: 3px;
+      border-bottom-color: #179DAF; } }
+  .rewardSwitchTab > div.active {
+    border-bottom: 2px solid #1875AD;
+    color: #1875AD; }
+    @media all and (max-width: 991px) {
+      .rewardSwitchTab > div.active {
+        color: white;
+        border-bottom-color: white;
+        box-shadow: 0 0 15px 5px rgba(23, 157, 175, 0.2);
+        font-weight: 800; } }
+
+.rewardSwitchTab .toViewTrans {
+  display: none; }
+  @media all and (max-width: 1300px) {
+    .rewardSwitchTab .toViewTrans {
+      display: inline-block; } }
+
+.transferPoint .modalContent {
+  max-width: 600px;
+  margin: 100px auto 0px auto;
+  padding: 5px 30px 30px 30px; }
+
+.transferPoint .modalDecision {
+  width: 100%;
+  margin-top: 60px; }
+  .transferPoint .modalDecision button {
+    display: inline-block;
+    width: calc( 50% - 15px); }
+    .transferPoint .modalDecision button:last-of-type {
+      margin-left: 30px; }
+
+.confirmTransferModal .modalContent, .confirmProductModal .modalContent {
+  max-width: 600px;
+  margin: 100px auto 0px auto;
+  padding: 30px; }
+
+.confirmTransferModal .warningTitle, .confirmProductModal .warningTitle {
+  color: #bd4242; }
+
+.confirmTransferModal .inputUnit, .confirmProductModal .inputUnit {
+  margin-top: 30px;
+  margin-bottom: 60px; }
+  .confirmTransferModal .inputUnit h5, .confirmProductModal .inputUnit h5 {
+    font-size: 15px; }
+
+.confirmTransferModal .modalDecision, .confirmProductModal .modalDecision {
+  width: 100%; }
+  .confirmTransferModal .modalDecision button, .confirmProductModal .modalDecision button {
+    display: inline-block;
+    width: calc( 50% - 15px); }
+    .confirmTransferModal .modalDecision button:last-of-type, .confirmProductModal .modalDecision button:last-of-type {
+      margin-left: 30px; }
+
+.productUseModal .modalContent {
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  margin: 100px auto; }
+  .productUseModal .modalContent .urlArea {
+    background-color: #f1f1f1;
+    height: 150px;
+    text-align: center; }
+    .productUseModal .modalContent .urlArea a p {
+      color: #1875AD !important;
+      font-size: 21px;
+      line-height: 150px; }
+    @media all and (max-width: 991px) {
+      .productUseModal .modalContent .urlArea a p.forPC {
+        display: none; } }
+    .productUseModal .modalContent .urlArea .mobileGoBtn {
+      display: none; }
+      @media all and (max-width: 991px) {
+        .productUseModal .modalContent .urlArea .mobileGoBtn {
+          display: block; } }
+  .productUseModal .modalContent table {
+    width: 100%;
+    height: 150px; }
+    .productUseModal .modalContent table td:first-of-type {
+      width: 50%;
+      height: 150px;
+      padding-left: 30px; }
+      .productUseModal .modalContent table td:first-of-type h5 {
+        font-size: 15px; }
+      .productUseModal .modalContent table td:first-of-type span {
+        font-size: 30px;
+        padding: 5px 10px;
+        border: 2px dashed #179DAF;
+        background-color: #dce7e8; }
+    .productUseModal .modalContent table td:last-of-type {
+      height: 150px;
+      padding-right: 30px; }
+      .productUseModal .modalContent table td:last-of-type p {
+        margin-bottom: 0px; }
+
+.productModal .modalContent {
+  max-width: 400px;
+  margin: 100px auto;
+  position: relative; }
+  .productModal .modalContent .productModalLeft {
+    display: inline-block;
+    display: none;
+    width: 50%;
+    vertical-align: top; }
+    .productModal .modalContent .productModalLeft .productModalImg {
+      width: 100%;
+      padding-top: 100%;
+      background-color: gray; }
+  .productModal .modalContent .productModalRight {
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    height: 100%;
+    padding: 30px;
+    padding-bottom: 82px; }
+    .productModal .modalContent .productModalRight span {
+      float: right;
+      color: green; }
+    .productModal .modalContent .productModalRight h5 {
+      width: 100%;
+      padding-right: 60px; }
+    .productModal .modalContent .productModalRight p {
+      color: gray; }
+    .productModal .modalContent .productModalRight img {
+      width: 100%; }
+  .productModal .modalContent .modalDecision {
+    position: absolute;
+    width: 100%;
+    right: 0px;
+    bottom: 30px;
+    padding: 0px 30px; }
+    .productModal .modalContent .modalDecision button {
+      display: inline-block;
+      width: calc( 50% - 15px); }
+      .productModal .modalContent .modalDecision button:last-of-type {
+        margin-left: 30px; }

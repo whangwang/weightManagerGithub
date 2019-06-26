@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('../layouts/include_header.ejs') %>
+    <link rel='stylesheet' href='/stylesheets/css/needVerify.css' />
+  </head>
+  <body>
+    <div class="container mainContainer indexContainer">
+      <div class="needVerifyContainer">
+        <div class="verifyEmailGroup">
+            <h5 class="verifyEmailTitle">認證成功</h5>
+            <img src="/images/complete.svg?<%= rnd %>" alt="">
+            <p class="verifyEmailDescription"><span>5</span> 秒後即將跳轉至首頁，請重新登入...</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    $('document').ready(function(){
+        let n = 5;
+        t = setInterval(function(){
+            if(n==0)window.location = '/';
+            else n--;
+            $('.verifyEmailDescription>span').html(n);
+        },1000);
+    });
+  </script>
+</html>

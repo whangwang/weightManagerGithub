@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('../layouts/include_header.ejs') %>
+    <link rel='stylesheet' href='/stylesheets/css/needVerify.css' />
+  </head>
+  <body>
+    <div class="container mainContainer indexContainer">
+      <div class="needVerifyContainer">
+        <div class="verifyEmailGroup">
+            <h5 class="verifyEmailTitle">Email認證</h5>
+            <div class="verifyEmailDisplay"><%= email %></div>
+            <p class="verifyEmailDescription">麻煩您至您的註冊信箱收取認證信以完成註冊，感謝您！</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    $('document').ready(function(){
+      
+    });
+  </script>
+</html>

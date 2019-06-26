@@ -1,0 +1,89 @@
+// color
+$main-color: #282A46;
+$lg-color: #179DAF;
+$lb-color: #1875AD;
+$bg-color: #F7F7F7;
+$lr-color: rgb(189, 66, 66);
+
+$main-color-dark: darken($main-color, 10%);
+$main-color-light: lighten($main-color, 10%);
+
+$lg-color-dark: darken($lg-color, 10%);
+$lg-color-light: lighten($lg-color, 10%);
+
+$lb-color-dark: darken($lb-color, 10%);
+$lb-color-light: lighten($lb-color, 10%);
+
+$bg-color-dark: darken($bg-color, 2%);
+$bg-color-light: lighten($bg-color, 10%);
+
+// font-size
+$paragraph: 15px;
+$h5: 18px;
+$h4: 21px;
+$h3: 30px;
+$h2: 48px;
+$h1: 60px;
+
+$font-sizes: $h1, $h2, $h3, $h4, $h5;
+
+$dlpc-media: 1300px;
+$dlpcs-media: 1299px;
+$pc-media:992px;
+$pcs-media:991px;
+$pad-media:768px;
+$pads-media:767px;
+$phone-media:480px;
+$phones-media:479px;
+
+@mixin dlpc-width() {
+    @media all and (max-width: $dlpc-media) {
+        @content;
+    }
+}
+
+@mixin pc-width() {
+    @media all and (min-width: $pc-media) {
+        @content;
+    }
+}
+
+@mixin pad-width() {
+    @media all and (max-width: $pcs-media) {
+        @content;
+    }
+}
+
+@mixin small-pad-width() {
+    @media all and (min-width:$phone-media) and (max-width: $pads-media) {
+        @content;
+    }
+}
+
+@mixin phone-width() {
+    @media all and (max-width: $phones-media) {
+        @content;
+    }
+}
+
+@mixin stripe() {
+    background: repeating-linear-gradient(
+      45deg,
+      #F4F4F4,
+      #F4F4F4 8px,
+      white 8px,
+      white 16px
+    );
+}
+
+@mixin shadow{
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+@mixin lightShadow{
+    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+}

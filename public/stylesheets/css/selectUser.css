@@ -1,0 +1,10 @@
+.selectUserDialog {
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+  height: 40vh;
+  padding: 30px;
+  max-width: 600px;
+  margin: auto;
+  margin-top: calc( 30vh - 79px);
+  background-color: white; }

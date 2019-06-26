@@ -1,0 +1,335 @@
+@import 'config';
+
+body{
+    background-color: $bg-color;
+    color: $main-color;
+    font-family: "Helvetica", "Arial", "LiHei Pro", "黑體-繁", "微軟正黑體", sans-serif !important;
+}
+
+.mainContainer{
+    @include pad-width{
+        margin-top: 10px!important;
+    }
+}
+
+p, span, div, button, li, td{
+    color: $main-color;
+    font-size: $paragraph;
+    font-weight: normal;
+}
+
+@for $i from 1 through 5 {
+    h#{$i} {
+      font-size: nth($font-sizes, $i);
+    }
+  }
+
+.bold{
+    font-weight: 800;
+}
+
+.webLoader{
+    position: fixed;
+    background-color: rgba(255,255,255,.8);
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    z-index: 1000000;
+    display: none;
+    img{
+        width: 100px;
+        vertical-align: middle;
+        margin: auto;
+    }
+}
+
+.modalBackground{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    overflow: auto;
+    .modalContent{
+        background-color: white;
+        margin-top: 100px;
+    }
+}
+
+button:not(.hamburger){
+    height: 37px;
+    padding: 0px 30px 0px 30px;
+    line-height: 35px;
+    font-weight: 400;
+    color: white;
+    border: 1px solid $lb-color;
+    cursor: pointer;
+    background-color: $lb-color;
+    outline: none!important;
+    position: relative;
+    transition: background-color .5s, color .5s, border .5s;
+    &:hover{
+        background-color: $lb-color-light;
+        border: 1px solid $lb-color-light;
+    }
+    &:active{
+        background-color: $lb-color-dark;
+        border: 1px solid $lb-color-dark;
+        top: 2px;
+    }
+    &.green{
+        border: 1px solid $lg-color;
+        background-color: $lg-color;
+        &:hover{
+            background-color: $lg-color-light;
+            border: 1px solid $lg-color-light;
+        }
+        &:active{
+            background-color: $lg-color-dark;
+            border: 1px solid $lg-color-dark;
+        }
+    }
+    &.red{
+        border: 1px solid rgb(189, 66, 66);
+        background-color: rgb(189, 66, 66);
+        &:hover{
+            background-color: rgb(224, 80, 80);
+            border: 1px solid rgb(224, 80, 80);
+        }
+        &:active{
+            background-color: rgb(141, 47, 47);
+            border: 1px solid rgb(141, 47, 47);
+        }
+    }
+    &.white{
+        border: 1px solid white;
+        background-color: white;
+        color: $lg-color;
+        &:hover{
+            background-color: white;
+            border: 1px solid white;
+            color: $lg-color-light;
+        }
+        &:active{
+            background-color: white;
+            border: 1px solid white;
+            color: $lg-color-dark;
+        }
+    }
+    &.unabled{
+        border: 1px solid lightgray;
+        background-color:  lightgray;
+        color: white;
+        cursor: not-allowed;
+        &:hover{
+            box-shadow: unset;
+            background-color:  lightgray;
+            border-color:  lightgray;
+        }
+        &:active{
+            top: 0px;
+            box-shadow: unset;
+            background-color:  lightgray;
+            border-color:  lightgray;
+        }
+    }
+}
+
+input{
+    height: 37px;
+    padding: 0px 15px 0px 15px;
+    line-height: 35px;
+    font-weight: 400;
+    color: $main-color;
+    border: 0px;
+    border-bottom: 2px solid $main-color;
+    width: 100%;
+    background-color: transparent;
+    outline: none!important;
+    position: relative;
+    transition: background-color .5s, color .5s, border .5s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-align: left;
+}
+
+textarea{
+    height: 37px;
+    padding: 5px 15px 0px 15px;
+    resize: none;
+    line-height: 35px;
+    font-weight: 400;
+    color: $main-color;
+    border: 1px solid $main-color;
+    border-radius: 8px;
+    width: 100%;
+    min-height: 200px;
+    background-color: transparent;
+    outline: none!important;
+    position: relative;
+    transition: background-color .5s, color .5s, border .5s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-align: left;
+}
+
+select{
+    background-color: transparent;
+    height: 37px;
+    width: 100%;
+    -webkit-appearance: none;
+    border: 0px;
+    border-radius: 0px;
+    border-bottom: 2px solid $main-color;
+    padding: 0px 10px 0px 10px;
+    cursor: pointer;
+    background-image: url(/static/images/dropdown.svg);
+    background-size: auto 8px;
+    background-repeat: no-repeat;
+    background-position-x: calc( 100% - 10px );
+    background-position-y: center;
+}
+
+.inputForm{
+    padding: 15px;
+    position: relative;
+    height: 100%;
+    .btnGroup{
+        position: absolute;
+        bottom: 30px;
+        width: calc( 100% - 30px );
+        text-align: center;
+        &.two{
+            button{
+                width: calc( 50% - 7.5px );
+                &:last-of-type{
+                    margin-left: 15px;
+                }
+            }
+        }
+    }
+    .inputUnit{
+        width: 100%;
+        &.half{
+            width: calc( 50% - 7.5px );
+            display: inline-block;
+            @include pad-width{
+                margin-top: 25px;
+            }
+            &.right{
+                margin-left: 15px;
+                @include pad-width{
+                    margin-left: 0px;
+                }
+            }
+            @include pad-width{
+                width: 100%;
+                display: block;
+            }
+        }
+        &.onethird{
+            width: calc( 33% - 10px );
+            display: inline-block;
+            vertical-align: top;
+            &.notfirst{
+                margin-left: 15px;
+            }
+        }
+        h5{
+            font-size: 15px;
+        }
+        &:not(:first-of-type){
+            margin-top: 25px;
+        }
+        &.address{
+            select.location{
+                width: 100px;
+            }
+            select.city{
+                width: 100px;
+            }
+            select.section{
+                width: 100px;
+                margin-left: -1px;
+            }
+            input.full{
+                width: calc( 100% - 200px );
+                margin-left: -1px;
+                top: 1px;
+                position: relative;
+            }
+            select.store{
+                width: calc( 100% - 100px );
+                margin-left: -1px;
+            }
+        }
+        .expGroup{
+            margin-bottom: 15px;
+            input{
+                width: 150px;
+                margin-right: 5px;
+                &.position{
+                    width: calc( 100% - 500px );
+                }
+            }
+            span{
+                font-size: 21px;
+                &:last-of-type{
+                    margin-left: 10px;
+                    cursor: pointer;
+                    user-select: none;
+                }
+            }
+            select{
+                width: calc( 100% - 550px );
+            }
+        }
+        &.required{
+            &:before {
+                content: "*必填";
+                color: #D54343;
+                top: 0;
+                right: 0;
+                z-index: 100000;
+                float: right;
+                font-size: 10px;
+             }
+        }
+    }
+}
+
+.ms-container{
+    margin-top: 65px;
+    @include phone-width{
+        margin-top: 30px;
+    }
+}
+
+.bx-wrapper{
+    box-shadow: 0 0 5px transparent!important;
+    -moz-box-shadow: 0 0 5px transparent!important;
+    -webkit-box-shadow: 0 0 5px transparent!important;
+    border: 5px solid transparent!important;
+    background-color: transparent!important;
+}
+
+.bx-prev, .bx-next{
+    background-color: $main-color!important;
+    border-radius: 100px;
+    text-indent: 0px!important;
+    color: white;
+    font-size: 21px;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none!important;
+    &:hover{
+        color: white;
+    }
+}

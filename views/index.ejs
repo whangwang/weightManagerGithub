@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('layouts/include_header.ejs') %>
+    <link rel='stylesheet' href='/stylesheets/css/index.css' />
+  </head>
+  <body>
+    <%- include('layouts/loading.ejs') %>
+    <div class="container mainContainer indexContainer">
+      <div class="loginContainer inLogin">
+        <div class="regisPanel">
+          <h5 class="bold" style="margin-top: 15px;margin-left: 15px;">註冊</h5>
+          <div class="inputForm loginInputForm">
+              <div class="inputUnit">
+                <h5>帳號</h5>
+                <input name="account" type="text" placeholder="請輸入帳號/Email" />
+              </div> 
+              <div class="inputUnit half">
+                <h5>密碼</h5>
+                <input name="pass" type="password" placeholder="請輸入密碼" />
+              </div> 
+              <div class="inputUnit half right">
+                <h5>確認密碼</h5>
+                <input name="confirm_pass" type="password" placeholder="請再輸入一次密碼" />
+              </div><br>
+              <div class="inputUnit half">
+                <h5>年齡</h5>
+                <select name="age" id="">
+                  <% for (let x = 16; x < 99; x++) { %>
+                    <option value="<%= x+1 %>"><%= x+1 %></option>
+                  <% } %>
+                </select>
+              </div> 
+              <div class="inputUnit half right">
+                <h5>性別</h5>
+                <select name="gender" id="">
+                  <option value="男">男</option>
+                  <option value="女">女</option>
+                </select>
+              </div> 
+              <div class="btnGroup two">
+                <button class="green toLogin">前往登入</button>
+                <button class="submitRegis">註冊</button>
+              </div>
+          </div>
+        </div><div class="panelDeco">
+          <div class="panelDecoTitle">
+              <h4>政治大學</h4>
+              <h5><span>體重管理系統</span></h5>
+          </div>
+        </div><div class="loginPanel">
+          <h5 class="mobileLogo">
+              政治大學<br><span>體重管理系統</span>
+          </h5>
+          <h5 class="bold pcLoginTitle" style="margin-top: 15px;margin-left: 15px;">登入</h5>
+          <div class="inputForm loginInputForm">
+              <div class="inputUnit">
+                <h5>帳號</h5>
+                <input name="loginAccount" type="text" placeholder="請輸入帳號/Email" />
+              </div> 
+              <div class="inputUnit">
+                <h5>密碼</h5>
+                <input name="loginPass" type="password" placeholder="請輸入密碼" />
+              </div> 
+              <div class="btnGroup two">
+                <button class="green toRegis">前往註冊</button>
+                <button class="submitLogin">登入</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    $('document').ready(function(){
+      $('body').on('click','.toRegis',function(){
+        $('.loginContainer').removeClass('inLogin');
+        $('.loginContainer').addClass('inRegis');
+      });
+      $('body').on('click','.toLogin',function(){
+        $('.loginContainer').addClass('inLogin');
+        $('.loginContainer').removeClass('inRegis');
+      });
+      $('body').on('click', '.submitRegis', function(){
+        async.waterfall([
+          function(next){
+            next(null, {
+              account: $('input[name=account]').val(),
+              password: $('input[name=pass]').val(),
+              age: parseInt($('select[name=age] > option:selected').val()),
+              gender: $('select[name=gender] > option:selected').val()
+            });
+          },
+          function(rst, next){
+            if (IsEmail(rst.account)){
+              next(null, rst);
+            } else {
+              toast("請輸入正確的信箱",'danger');
+            }
+          },
+          function(rst, next){
+            if (rst.password == $('input[name=confirm_pass]').val()){
+              next(null, rst, md5(rst.password, rst.account));
+            } else {
+              danger("確認密碼錯誤",'danger');
+            }
+          }
+        ], function(err, rst, md5_pass){
+            if ( err ) throw err;  // 匯集 err1 err2 err3
+            else {
+              rst.password = md5_pass;
+              $('.webLoader').fadeIn(500).css('display','flex');
+              $.post('/ajax_register', rst, function(rtn){
+                if ( rtn.status ){
+                  window.location = '/needVerify?email='+rtn.email;
+                } else {
+                  $('.webLoader').fadeOut(500);
+                  toast(rtn.msg,'danger');
+                }
+              });
+            }
+        });
+      });
+      $('body').on('click', '.submitLogin', function(){
+        async.waterfall([
+          function(next){
+            next(null, {
+              account: $('input[name=loginAccount]').val(),
+              password: $('input[name=loginPass]').val(),
+            });
+          },
+          function(rst, next){
+            next(null, rst, md5(rst.password, rst.account));
+          }
+        ], function(err, rst, md5_pass){
+            if ( err ) throw err;  // 匯集 err1 err2 err3
+            else {
+              rst.password = md5_pass;
+              $('.webLoader').fadeIn(500).css('display','flex');
+              $.post('/ajax_login', rst, function(rtn){
+                if ( rtn.status ){
+                  window.location = '/users/dash';
+                } else {
+                  $('.webLoader').fadeOut(500);
+                  toast(rtn.msg,'danger');
+                }
+              });
+            }
+        });
+      });
+    });
+  </script>
+</html>
