@@ -9,7 +9,7 @@
     "build-css-watch": "node-sass -w ./public/stylesheets/scss/ -o ./public/stylesheets/css/"
   },
   "dependencies": {
-    "async": "^2.6.2",
+    "async": "^2.6.4",
     "connect-mongo": "^2.0.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
